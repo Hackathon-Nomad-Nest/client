@@ -3,6 +3,31 @@ button {
     background-color: transparent;
 }
 
+.width-100 {
+    width: 100%;
+}
+
+.height-100 {
+    height: 100%;
+}
+
+.flex {
+    display: flex;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.pd-8 {
+    padding: 8px;
+}
+
+.m-8 {
+    margin: 8px;
+}
+
 ::-webkit-scrollbar-track {
     border-radius: 3px;
     background-color: rgba(209, 211, 220, 0.5);
