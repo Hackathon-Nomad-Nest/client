@@ -1,12 +1,12 @@
 import React, { ChangeEvent, ReactNode } from 'react';
 import TextField from '@mui/material/TextField';
 
-interface InputProps extends React.ComponentProps<typeof TextField> {
+interface IInputProps extends React.ComponentProps<typeof TextField> {
   label?: ReactNode;
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
-const Input: React.FC<InputProps> = ({ label, onChange, ...props }) => (
+const Input: React.FC<IInputProps> = ({ label, onChange, ...props }) => (
   <TextField
     label={label}
     onChange={onChange}

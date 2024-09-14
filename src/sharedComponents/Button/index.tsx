@@ -1,11 +1,11 @@
 import React from 'react';
 import Button, { ButtonProps as MUIButtonProps } from '@mui/material/Button';
 
-interface CustomButtonProps extends MUIButtonProps {
+interface ICustomButtonProps extends MUIButtonProps {
   label: string;
 }
 
-const CustomButton: React.FC<CustomButtonProps> = ({ label, ...props }) => {
+const CustomButton: React.FC<ICustomButtonProps> = ({ label, ...props }) => {
   return (
     <Button {...props}>
       {label}

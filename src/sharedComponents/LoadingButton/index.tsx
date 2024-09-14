@@ -2,13 +2,13 @@ import React from 'react';
 import MUILoadingButton, { LoadingButtonProps as MUILoadingButtonProps } from '@mui/lab/LoadingButton';
 import { SxProps, Theme } from '@mui/system';
 
-interface LoadingButtonProps extends MUILoadingButtonProps {
+interface ILoadingButtonProps extends MUILoadingButtonProps {
   label?: string;
   onClick?: () => void;
   sx?: SxProps<Theme>;
 }
 
-const LoadingButton: React.FC<LoadingButtonProps> = ({ onClick, label = '', sx = {}, ...restProps }) => (
+const LoadingButton: React.FC<ILoadingButtonProps> = ({ onClick, label = '', sx = {}, ...restProps }) => (
   <MUILoadingButton
     color="primary"
     onClick={onClick}
