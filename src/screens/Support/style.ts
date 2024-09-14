@@ -3,10 +3,10 @@ import Box from "src/sharedComponents/Box";
 import { css_hide_scrollbars } from "src/styles/globalStyles";
 import SupportImage from 'src/assets/Backgrounds/support-page.jpg';
 
-export const StyledScrollableBox = styled(Box)`
+export const BoxWithHiddenScrollbar = styled(Box)`
+  ${css_hide_scrollbars()}
   gap: 1rem;
   max-height: calc(100vh - 300px);
-  ${css_hide_scrollbars()}
 `;
 
 export const BoxWithBackground = styled(Box)`

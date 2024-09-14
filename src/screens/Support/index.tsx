@@ -14,7 +14,7 @@ import LoadingButton from 'src/sharedComponents/LoadingButton';
 import Typography from 'src/sharedComponents/Typography';
 
 import { isValidEmail } from 'src/lib/helper';
-import { BoxWithBackground, StyledScrollableBox } from './style';
+import { BoxWithBackground, BoxWithHiddenScrollbar } from './style';
 
 export default function AccordionExpandIcon() {
   const [email, setEmail] = useState<string>('');
@@ -77,7 +77,7 @@ export default function AccordionExpandIcon() {
       <BoxWithBackground />
       <Box className="flex m-16" sx={{ gap: '1rem' }}>
         {/* FAQs */}
-        <StyledScrollableBox className="flex-column flex-1 oveflow-y-auto">
+        <BoxWithHiddenScrollbar className="flex-column flex-1 oveflow-y-auto">
           {FAQs.map((faq: IFaq) => (
             <Box key={faq.question}>
               <Accordion>
@@ -90,7 +90,7 @@ export default function AccordionExpandIcon() {
               </Accordion>
             </Box>
           ))}
-        </StyledScrollableBox>
+        </BoxWithHiddenScrollbar>
 
         {/* Form - Input, Comment, Submit Button */}
         <Box className="flex-1 align-self-center" sx={{ marginX: '70px' }}>
