@@ -22,12 +22,24 @@
   flex-direction: column;
 }
 
+.flex-1 {
+  flex: 1;
+}
+
+.align-self-center {
+  align-self: center;
+}
+
 .pd-8 {
   padding: 8px;
 }
 
 .m-8 {
   margin: 8px;
+}
+
+.m-16 {
+  margin: 16px;
 }
 
 .cursor-pointer {
