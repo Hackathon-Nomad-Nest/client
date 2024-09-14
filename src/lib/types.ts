@@ -8,3 +8,8 @@ export interface IRoutesConfigType {
   isFooter?: boolean;
   isHeader?: boolean;
 }
+
+export interface IFaq {
+  question: string;
+  answer: string;
+}
