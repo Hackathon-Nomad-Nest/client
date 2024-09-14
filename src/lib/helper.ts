@@ -2,6 +2,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { isPlainObject, snakeCase } from 'lodash';
 import camelCase from 'lodash/camelCase';
+import { DeepPartial } from 'src/redux/types';
 
 export const filterNumeric = (input: string) => {
   return input.replace(/[^\d]/g, '');
@@ -91,4 +92,24 @@ export function isValidEmail(email: string) {
   const emailRegex =
     /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   return emailRegex.test(email);
+}
+
+export function filterObjectKeys<T>(obj: any, keys: Array<keyof T>): DeepPartial<T> {
+  const result: any = {};
+
+  for (const key of keys) {
+    if (key in obj) {
+      const value = obj[key];
+      if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
+        result[key] = filterObjectKeys(
+          value,
+          Object.keys(value).filter((singleValue) => typeof singleValue !== 'symbol') 
+        );
+      } else {
+        result[key] = value;
+      }
+    }
+  }
+
+  return result;
 }
