@@ -1,5 +1,217 @@
+// import { useNavigate } from "react-router-dom";
+import './style.css';
+import mount from '../../Assets/mountains-trimmed.mp4'
+import wing from '../../Assets/img/planeWing.jpg'
+
 const Home = () => {
-  return <div>Welcome to home</div>;
+  // const navigate = useNavigate();
+  // const handleExploreClick = () => {
+  //   // navigate()
+  //   // navigate to explore page
+  //   console.log('navigate to explore page')
+  // }
+  return <div>
+    <div className='xl:mt-[140px]' data-aos="fade-in">
+      <video className='bg-img' src={mount} autoPlay loop muted />
+      <div className="grid md:grid-cols-2 gap-4 md:gap-8 xl:gap-20 xl:mx-[80px] md:items-center p-10">
+        <div>
+          <h1 className="block text-3xl font-bold text-gray-100 sm:text-4xl lg:text-6xl lg:leading-tight dark:text-natural-100">Start your journey with <span className="text-gray-900">NomadNest</span></h1>
+          <p className="mt-3 text-lg text-gray-100 dark:text-natural-100">Hand-picked journey with cuttingedge AI.</p>
+
+          {/* <!-- Buttons --> */}
+          <div className="mt-7 grid gap-3 w-full sm:inline-flex">
+            <a className="py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-gray-100 hover:bg-blue-700 focus:outline-none focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none" href="#">
+              Explore
+              <svg className="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6" /></svg>
+            </a>
+            <a className="py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-100 shadow-sm hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-gray-100 dark:hover:bg-neutral-800 dark:focus:bg-neutral-800" href="#">
+              Plan a trip
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    {/*  */}
+    {/* <!-- Approach --> */}
+    <div className="bg-transparent py-12 xl:mt-[270px]">
+      {/* <!-- Approach --> */}
+      <div className="max-w-5xl px-4 xl:px-0 py-10 lg:pt-20 lg:pb-20 mx-auto">
+        {/* <!-- Title --> */}
+        <div className="max-w-3xl mb-10 lg:mb-14">
+          <h2 className="text-black font-semibold text-2xl md:text-4xl md:leading-tight">Our approach</h2>
+          <p className="mt-1 text-gray-800">This profound insight guides our comprehensive strategy — from meticulous research and strategic planning to the seamless execution of brand development and website or product deployment.</p>
+        </div>
+        {/* <!-- End Title --> */}
+
+        {/* <!-- Grid --> */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 lg:items-center">
+          <div className="aspect-w-16 aspect-h-9 lg:aspect-none">
+            <img className="w-full object-cover rounded-xl" src={wing} alt="Features Image" />
+          </div>
+          {/* <!-- End Col --> */}
+
+          {/* <!-- Timeline --> */}
+          <div>
+            {/* <!-- Heading --> */}
+            <div className="mb-4">
+              <h3 className="text-gray-800 text-xs font-medium uppercase">
+                Steps
+              </h3>
+            </div>
+            {/* <!-- End Heading --> */}
+
+            {/* <!-- Item --> */}
+            <div className="flex gap-x-5 ms-1">
+              {/* <!-- Icon --> */}
+              <div className="relative last:after:hidden after:absolute after:top-8 after:bottom-0 after:start-4 after:w-px after:-translate-x-[0.5px] after:bg-neutral-800">
+                <div className="relative z-10 size-8 flex justify-center items-center">
+                  <span className="flex shrink-0 justify-center items-center size-8 border border-neutral-800 text-gray-800 font-semibold text-xs uppercase rounded-full">
+                    1
+                  </span>
+                </div>
+              </div>
+              {/* <!-- End Icon --> */}
+
+              {/* <!-- Right Content --> */}
+              <div className="grow pt-0.5 pb-8 sm:pb-12">
+                <p className="text-sm lg:text-base text-customTurquoiseGreen">
+                  <span className="text-gray-800">Market Research and Analysis:</span>
+                  Identify your target audience and understand their needs, preferences, and behaviors.
+                </p>
+              </div>
+              {/* <!-- End Right Content --> */}
+            </div>
+            {/* <!-- End Item --> */}
+
+            {/* <!-- Item --> */}
+            <div className="flex gap-x-5 ms-1">
+              {/* <!-- Icon --> */}
+              <div className="relative last:after:hidden after:absolute after:top-8 after:bottom-0 after:start-4 after:w-px after:-translate-x-[0.5px] after:bg-neutral-800">
+                <div className="relative z-10 size-8 flex justify-center items-center">
+                  <span className="flex shrink-0 justify-center items-center size-8 border border-neutral-800 text-gray-800 font-semibold text-xs uppercase rounded-full">
+                    2
+                  </span>
+                </div>
+              </div>
+              {/* <!-- End Icon --> */}
+
+              {/* <!-- Right Content --> */}
+              <div className="grow pt-0.5 pb-8 sm:pb-12">
+                <p className="text-sm lg:text-base text-customTurquoiseGreen">
+                  <span className="text-gray-800">Product Development and Testing:</span>
+                  Develop digital products or services that address the needs and preferences of your target audience.
+                </p>
+              </div>
+              {/* <!-- End Right Content --> */}
+            </div>
+            {/* <!-- End Item --> */}
+
+            {/* <!-- Item --> */}
+            <div className="flex gap-x-5 ms-1">
+              {/* <!-- Icon --> */}
+              <div className="relative last:after:hidden after:absolute after:top-8 after:bottom-0 after:start-4 after:w-px after:-translate-x-[0.5px] after:bg-neutral-800">
+                <div className="relative z-10 size-8 flex justify-center items-center">
+                  <span className="flex shrink-0 justify-center items-center size-8 border border-neutral-800 text-gray-800 font-semibold text-xs uppercase rounded-full">
+                    3
+                  </span>
+                </div>
+              </div>
+              {/* <!-- End Icon --> */}
+
+              {/* <!-- Right Content --> */}
+              <div className="grow pt-0.5 pb-8 sm:pb-12">
+                <p className="text-sm md:text-base text-customTurquoiseGreen">
+                  <span className="text-gray-800">Marketing and Promotion:</span>
+                  Develop a comprehensive marketing strategy to promote your digital products or services.
+                </p>
+              </div>
+              {/* <!-- End Right Content --> */}
+            </div>
+            {/* <!-- End Item --> */}
+
+            {/* <!-- Item --> */}
+            <div className="flex gap-x-5 ms-1">
+              {/* <!-- Icon --> */}
+              <div className="relative last:after:hidden after:absolute after:top-8 after:bottom-0 after:start-4 after:w-px after:-translate-x-[0.5px] after:bg-neutral-800">
+                <div className="relative z-10 size-8 flex justify-center items-center">
+                  <span className="flex shrink-0 justify-center items-center size-8 border border-neutral-800 text-gray-800 font-semibold text-xs uppercase rounded-full">
+                    4
+                  </span>
+                </div>
+              </div>
+              {/* <!-- End Icon --> */}
+
+              {/* <!-- Right Content --> */}
+              <div className="grow pt-0.5 pb-8 sm:pb-12">
+                <p className="text-sm md:text-base text-customTurquoiseGreen">
+                  <span className="text-gray-800">Launch and Optimization:</span>
+                  Launch your digital products or services to the market, closely monitoring their performance and user feedback.
+                </p>
+              </div>
+              {/* <!-- End Right Content --> */}
+            </div>
+            {/* <!-- End Item --> */}
+
+            <a className="group inline-flex items-center gap-x-2 py-2 px-3 bg-customTeal font-medium text-sm text-neutral-100 rounded-full focus:outline-none" href="#">
+              <svg className="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path><path className="opacity-0 group-hover:opacity-100 group-focus:opacity-100 group-hover:delay-100 transition" d="M14.05 2a9 9 0 0 1 8 7.94"></path><path className="opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition" d="M14.05 6A5 5 0 0 1 18 10"></path></svg>
+              Schedule a call
+            </a>
+          </div>
+          {/* <!-- End Timeline --> */}
+        </div>
+        {/* <!-- End Grid --> */}
+      </div>
+    </div>
+    {/* <!-- End Approach --> */}
+
+    {/* sectoin 3 */}
+    {/* <!-- Hero --> */}
+    <div className="relative overflow-hidden">
+      {/* <!-- Gradients --> */}
+      <div aria-hidden="true" className="flex absolute -top-96 start-1/2 transform -translate-x-1/2">
+        <div className="bg-gradient-to-r from-violet-300/50 to-purple-100 blur-3xl w-[25rem] h-[44rem] rotate-[-60deg] transform -translate-x-[10rem]"></div>
+        <div className="bg-gradient-to-tl from-blue-50 via-blue-100 to-blue-50 blur-3xl w-[90rem] h-[50rem] rounded-fulls origin-top-left -rotate-12 -translate-x-[15rem]"></div>
+      </div>
+      {/* <!-- End Gradients --> */}
+
+      <div className="relative z-10">
+        <div className="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-16">
+          <div className="max-w-2xl text-center mx-auto">
+            <p className="inline-block text-sm font-medium bg-clip-text bg-gradient-to-l from-blue-600 to-violet-500 text-transparent">
+              Nomad Nest
+            </p>
+
+            {/* <!-- Title --> */}
+            <div className="mt-5 max-w-2xl">
+              <h1 className="block font-semibold text-gray-800 text-4xl md:text-5xl lg:text-6xl">
+                Ultimate Trip Planner
+              </h1>
+            </div>
+            {/* <!-- End Title --> */}
+
+            <div className="mt-5 max-w-3xl">
+              <p className="text-lg text-gray-600">At <strong>NomadNest</strong>, we redefine the way you travel by combining the power of AI with personalized trip planning. Our platform offers fully customizable itineraries, allowing you to explore the world on your terms. Whether it's finding hidden gems or crafting a seamless travel experience, NomadNest ensures every journey is tailored to your unique preferences, delivering an unforgettable adventure every time.</p>
+            </div>
+
+            {/* <!-- Buttons --> */}
+            <div className="mt-8 gap-3 flex justify-center">
+              <a className="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none" href="#">
+                Explore
+                <svg className="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6" /></svg>
+              </a>
+              <a className="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none" href="#">
+
+                Plan a trip
+              </a>
+            </div>
+            {/* <!-- End Buttons --> */}
+          </div>
+        </div>
+      </div>
+    </div>
+    {/* <!-- End Hero --> */}
+  </div>
 };
 
 export default Home;
