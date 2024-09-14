@@ -1,6 +1,7 @@
 import React from 'react';
 import MUILoadingButton, { LoadingButtonProps as MUILoadingButtonProps } from '@mui/lab/LoadingButton';
 import { SxProps, Theme } from '@mui/system';
+import theme from 'src/styles/theme';
 
 interface ILoadingButtonProps extends MUILoadingButtonProps {
   label?: string;
@@ -10,7 +11,6 @@ interface ILoadingButtonProps extends MUILoadingButtonProps {
 
 const LoadingButton: React.FC<ILoadingButtonProps> = ({ onClick, label = '', sx = {}, ...restProps }) => (
   <MUILoadingButton
-    color="primary"
     onClick={onClick}
     variant="contained"
     sx={{
@@ -26,6 +26,7 @@ const LoadingButton: React.FC<ILoadingButtonProps> = ({ onClick, label = '', sx 
       boxShadow: '1px 1px 1px 0px rgba(68, 97, 242, 0.15)',
       whiteSpace: 'nowrap',
       textAlign: 'center',
+      backgroundColor: `${theme.primaryColor.tealBlue}`,
       ...sx,
     }}
     {...restProps}
