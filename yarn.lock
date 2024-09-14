@@ -567,6 +567,7 @@
   resolved "https://registry.yarnpkg.com/@mui/core-downloads-tracker/-/core-downloads-tracker-6.1.0.tgz#35e37713a4240c09db92c082502fa0c90f6e37be"
   integrity sha512-covEnIn/2er5YdtuukDRA52kmARhKrHjOvPsyTFMQApZdrTBI4h8jbEy2mxZqwMwcAFS9coonQXnEZKL1rUNdQ==
 
+
 "@mui/lab@^6.0.0-beta.9":
   version "6.0.0-beta.9"
   resolved "https://registry.yarnpkg.com/@mui/lab/-/lab-6.0.0-beta.9.tgz#7e560d6ad006c1749f5e9ca6eaba0a8726217f57"
