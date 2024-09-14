@@ -1,10 +1,8 @@
-import { combineReducers } from "@reduxjs/toolkit";
-import taskSlice from "./Slices/taskSlice";
-import todoSlice from "./Slices/todoSlice";
+import { combineReducers } from '@reduxjs/toolkit';
+import userSlice from './Slices/userSlice';
 
 const rootReducer = combineReducers({
-  todos: todoSlice,
-  tasks: taskSlice,
-})
+  user: userSlice,
+});
 
 export default rootReducer;

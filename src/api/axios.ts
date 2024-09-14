@@ -1,8 +1,8 @@
-import axios, { AxiosInstance, AxiosResponse } from "axios";
-import { OptionsObject, SnackbarMessage } from "notistack";
+import axios, { AxiosInstance, AxiosResponse } from 'axios';
+import { OptionsObject, SnackbarMessage } from 'notistack';
 
 // You can set your base URL here
-const BASE_URL = process.env.REACT_APP_API_BASE_URL;
+const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 // This will hold the reference to the enqueueSnackbar function
 let enqueueSnackbar: ((message: SnackbarMessage, options?: OptionsObject | undefined) => string | number) | null = null;
@@ -19,18 +19,16 @@ const axiosInstance: AxiosInstance = axios.create({
   baseURL: BASE_URL,
   withCredentials: true, // Include this line to send cookies with every request
   timeout: 50000,
-  timeoutErrorMessage: "Request timed out",
+  timeoutErrorMessage: 'Request timed out',
   // You can add your headers here
 });
 
 // Request Interceptor
 axiosInstance.interceptors.request.use(
-  config => {
-    config.headers["Permissions-Policy"] = "geolocation=();";
-
+  (config) => {
     return config;
   },
-  error => {
+  (error) => {
     // Handle request errors
     return Promise.reject(error);
   }
@@ -42,7 +40,7 @@ axiosInstance.interceptors.response.use(
     // You can add any additional processing for the response here
     return response;
   },
-  async error => {
+  async (error) => {
     const customConfig = error?.config;
 
     // Check if the error response should be skipped
@@ -53,7 +51,7 @@ axiosInstance.interceptors.response.use(
     // Handle other response errors
     if (enqueueSnackbar && error?.response?.data?.status !== 401) {
       enqueueSnackbar(`An error occurred: ${error?.response?.data?.message}`, {
-        variant: "error",
+        variant: 'error',
         autoHideDuration: 3000,
       });
     }
