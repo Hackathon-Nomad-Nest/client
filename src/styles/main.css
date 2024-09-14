@@ -1,0 +1,14 @@
+button {
+    cursor: pointer;
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-track {
+    border-radius: 3px;
+    background-color: rgba(209, 211, 220, 0.5);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #c4c4c4;
+    border-radius: 3px;
+}
