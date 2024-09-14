@@ -41,8 +41,8 @@ export const loginUser = createAsyncThunk<IUser['data'], string, { rejectValue: 
   }
 );
 
-const formatSlice = createSlice({
-  name: 'user', // actions will be having type name/reducerName
+const userSlice = createSlice({
+  name: 'user',
   initialState,
   reducers: {
     fetchUser: (state) => {
@@ -71,6 +71,6 @@ const formatSlice = createSlice({
 
 export const getUser = (state: RootState) => state.user.data;
 
-export const { fetchUser } = formatSlice.actions;
+export const { fetchUser } = userSlice.actions;
 
-export default formatSlice.reducer;
+export default userSlice.reducer;
