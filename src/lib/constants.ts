@@ -37,8 +37,8 @@ export const FAQs: IFaq[] = [
 export const itinerarySteps: IApproachStep[] = [
   {
     stepNo: 1,
-    title: 'Location Selection',
-    description: 'Identify and choose destinations based on user preferences.',
+    title: "Location & Travel Party Size",
+    description: "Identify and choose destinations based on user preferences and gather information on the number of travelers."
   },
   {
     stepNo: 2,
@@ -47,30 +47,20 @@ export const itinerarySteps: IApproachStep[] = [
   },
   {
     stepNo: 3,
-    title: 'Travel Party Size',
-    description: 'Gather information on the number of travelers.',
+    title: "Duration",
+    description: "Specify the number of days for the itinerary."
   },
   {
     stepNo: 4,
-    title: 'Duration',
-    description: 'Specify the number of days for the itinerary.',
+    title: "Budget Range & Mode of Transport",
+    description: "Request the user's budget range and determine preferred modes of transportation."
   },
   {
     stepNo: 5,
-    title: 'Budget Range',
-    description: "Request the user's budget range.",
-  },
-  {
-    stepNo: 6,
-    title: 'Mode of Transport',
-    description: 'Determine preferred modes of transportation.',
-  },
-  {
-    stepNo: 7,
-    title: 'Duration',
-    description: 'Specify the number of days for the itinerary.',
-  },
-];
+    title: "Duration",
+    description: "Specify the number of days for the itinerary."
+  }
+]
 
 export const STORAGE_KEYS = {
   userKey: 'userKey',
