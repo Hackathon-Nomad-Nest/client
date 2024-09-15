@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const StyledContainer = styled.div`
   position: sticky;
@@ -10,15 +10,15 @@ export const StyledContainer = styled.div`
   justify-content: space-around;
   align-items: center;
   padding: 10px;
-  z-index:2;
-  border-bottom: 5px solid ${props => props.theme.primaryColor.peach};
-  flex-wrap:wrap;
-  gap:16px;
+  z-index: 2;
+  border-bottom: 5px solid ${(props) => props.theme.primaryColor.peach};
+  flex-wrap: wrap;
+  gap: 16px;
 `;
 
-export const StyledNote = styled.div`
+export const StyledNote = styled.div<{ $color: string }>`
   font-style: italic;
-  color: ${props => props.theme.primaryColor.peach};
+  color: ${({ $color }) => $color};
   font-size: 14px;
   padding-bottom: 5px;
 `;
@@ -33,7 +33,7 @@ export const StyledBudget = styled.div`
 export const StyledAmount = styled.div`
   padding: 8px 16px;
   border-radius: 8px;
-  background-color: ${props => props.theme.primaryColor.peach};
+  background-color: ${(props) => props.theme.primaryColor.peach};
 `;
 
 export const StyledDate = styled.p`

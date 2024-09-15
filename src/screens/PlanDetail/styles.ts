@@ -1,3 +1,4 @@
+import { DUMMY_PLAN_IMAGE } from 'src/lib/constants';
 import { css_flex_col } from 'src/styles/globalStyles';
 import styled from 'styled-components';
 
@@ -5,10 +6,10 @@ export const StyledContainer = styled.div`
   ${css_flex_col}
 `;
 
-export const StyledMainBanner = styled.div`
+export const StyledMainBanner = styled.div<{ $imageUrl?: string }>`
   min-height: 80vh;
   width: 100%;
-  background-image: url('https://images.pexels.com/photos/1285625/pexels-photo-1285625.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+  background-image: url(${({ $imageUrl }) => ($imageUrl ? $imageUrl : DUMMY_PLAN_IMAGE)});
   background-size: cover;
   background-position: center;
   padding: 20px;
