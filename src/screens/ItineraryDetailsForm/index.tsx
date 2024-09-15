@@ -139,7 +139,7 @@ const ItineraryDetailsForm: React.FC = () => {
                             }
                           >
                             <SidebarIcon>
-                              <Icon />
+                              <Icon color='primary'/>
                             </SidebarIcon>
                             <OptionText>{option.label}</OptionText>
                           </Option>
