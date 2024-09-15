@@ -38,11 +38,11 @@ const PlanDetail = () => {
 
   useEffect(() => {
     if (planId) {
-      fetchPlanDetails(planId).then(generatePDF);
+      fetchPlanDetails(planId);
     }
   }, [planId]);
 
-  const generatePDF = () => {
+  const generatePDF = useCallback(() => {
     const options = {
       margin: 5,
       filename: `${planDetail?.trip_details?.origin} to ${planDetail?.trip_details?.destination}.pdf`,
@@ -55,7 +55,13 @@ const PlanDetail = () => {
         .save()
         .then(() => navigate(-1));
     }, 500);
-  };
+  }, [planDetail]);
+
+  useEffect(() => {
+    if (planDetail) {
+      generatePDF();
+    }
+  }, [planDetail, generatePDF]);
 
   return (
     <StyledContainer ref={divRef}>
