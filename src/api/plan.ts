@@ -16,7 +16,7 @@ export const getPlanById = (id: string) => {
 
 export const removePlanById = (id: string, data: { day: string; keyName: string }) => {
   return apiRequest({
-    method: 'GET',
+    method: 'PUT',
     url: `${apiEndpoints.GET_PLAN_BY_ID}/` + id,
     config: { params: { action: 'remove' } },
     data,
@@ -25,7 +25,7 @@ export const removePlanById = (id: string, data: { day: string; keyName: string 
 
 export const addPlanById = (id: string, data: IPlanChangeProps) => {
   return apiRequest({
-    method: 'GET',
+    method: 'PUT',
     url: `${apiEndpoints.GET_PLAN_BY_ID}/` + id,
     config: { params: { action: 'add' } },
     data,

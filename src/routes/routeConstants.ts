@@ -3,6 +3,7 @@ export enum routes {
   LOGIN = '/login',
   SUPPORT = '/support',
   PLAN_DETAIL = '/plan-detail/:planId',
+  PRINT_PLAN_DETAIL = '/plan-detail/:planId/print',
   EXPLORE = '/explore',
 }
 
