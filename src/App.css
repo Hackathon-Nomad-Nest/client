@@ -66,6 +66,7 @@
   /* this is the vertical line */
   background: black !important;
 }
+
 .arizonia-regular {
   font-family: "Arizonia", system-ui;
   font-weight: 400;
@@ -112,4 +113,8 @@
   /* IE and Edge */
   scrollbar-width: none;
   /* Firefox */
+}
+
+.mapboxgl-ctrl-bottom-right {
+  display: none;
 }
