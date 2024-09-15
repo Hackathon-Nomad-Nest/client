@@ -71,7 +71,12 @@ const DayCard = (props: IDayCardProps) => {
       <VerticalTimeline>
         {Object.entries(restProps)?.map(([key, value], fieldIndex) => {
           const Icon = getIconComponent(key);
-          const activityName = 'activity' in value ? value['activity'] : '';
+          const activityName =
+            'activity' in value
+              ? value['activity']
+              : key === 'lunch' || key === 'dinner' || key === 'breakfast'
+              ? key
+              : '';
           return (
             <VerticalTimelineElement {...elementStyle} date={value?.time} icon={<Icon />} key={key + fieldIndex}>
               <StyledCardContainer>
