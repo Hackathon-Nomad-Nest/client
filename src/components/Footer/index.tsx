@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <div>
       {/* <!-- ========== FOOTER ========== --> */}
-      <footer className="mt-auto bg-gray-900 w-full">
+      <footer className="mt-auto bg-customTeal w-full">
         <div className="mt-auto w-full max-w-[85rem] py-10 px-4 sm:px-6 lg:px-8 lg:pt-20 mx-auto">
           {/* <!-- Grid --> */}
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
@@ -46,7 +46,7 @@ const Footer = () => {
                     <label htmlFor="hero-input" className="sr-only">Subscribe</label>
                     <input type="text" id="hero-input" name="hero-input" className="py-3 px-4 block w-full border-transparent rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" placeholder="Enter your email" />
                   </div>
-                  <a className="w-full sm:w-auto whitespace-nowrap p-3 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none" href="#">
+                  <a className="w-full sm:w-auto whitespace-nowrap p-3 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-customTeal text-white disabled:opacity-50 disabled:pointer-events-none" href="#">
                     Subscribe
                   </a>
                 </div>
