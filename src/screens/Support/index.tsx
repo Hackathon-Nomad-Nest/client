@@ -76,9 +76,9 @@ export default function AccordionExpandIcon() {
 
   return (
     <>
-      <Box className="flex" sx={{ gap: '1rem', margin: '16px 0px' }}>
+      <img src={SupportImage} alt="" className='absolute -z-10 top-0 w-full h-full' />
+      <Box className="flex max-w-[85rem] glass p-10 mx-10 mt-24 mb-12 " sx={{ gap: '1rem' }}>
         <div className="bg-transparent">
-          <img src={SupportImage} alt="" className='absolute -z-10 top-0 w-full h-full' />
         </div>
         {/* FAQs */}
         <BoxWithHiddenScrollbar className="flex-column flex-1 oveflow-y-auto">

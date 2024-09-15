@@ -91,3 +91,13 @@ export interface ITrip {
   travel_plan: Record<string, IDayPlan>;
   cost_summary: ISummary;
 }
+
+export interface ITPlan {
+  budget: string,
+  to: string,
+  from: string,
+  adults: string,
+  kids: string,
+  numberOfDays: string,
+  id: string,
+}
