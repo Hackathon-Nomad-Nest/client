@@ -33,7 +33,7 @@ const OurApproach = () => {
             <Step {...step}/>
           ))}
 
-          <Link to={routes.EXPLORE} className="group inline-flex items-center gap-x-2 py-2 px-3 bg-customTeal font-medium text-sm text-neutral-100 rounded-full focus:outline-none">
+          <Link to={routes.ITINERARY_DETAILS_FORM} className="group inline-flex items-center gap-x-2 py-2 px-3 bg-customTeal font-medium text-sm text-neutral-100 rounded-full focus:outline-none">
             Create Itinerary <AddCircleOutlineIcon />
           </Link>
         </div>
