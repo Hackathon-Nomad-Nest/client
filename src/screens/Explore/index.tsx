@@ -10,10 +10,17 @@ import PersonIcon from '@mui/icons-material/Person';
 import EditCalendarIcon from '@mui/icons-material/EditCalendar';
 import { getItenaryPlan } from 'src/api/plan';
 import { ItineraryDetailsValues } from 'src/lib/types';
+import { getImageUrl } from 'src/api/imageUrl';
+import { IImageProps } from 'src/components/DayCard';
 
 const Explore = () => {
   const [dataItenary, setDataItenary] = useState<ItineraryDetailsValues[]>();
-  console.log(dataItenary);
+  const [imageUrl, setImageUrl] = useState<Record<string, IImageProps[]>>({});
+
+  const generateKeyArray = useCallback(() => {
+    const keyArray = dataItenary?.map((plan) => plan.to);
+    return keyArray ?? [];
+  }, [dataItenary]);
 
   const fetchPlanDetails = useCallback(async () => {
     try {
@@ -32,6 +39,22 @@ const Explore = () => {
   useEffect(() => {
     fetchPlanDetails();
   }, [fetchPlanDetails]);
+
+  const fetchImageUrl = useCallback(async () => {
+    try {
+      const data = generateKeyArray();
+      const imageUrlResponse = await getImageUrl(data);
+      if (imageUrlResponse?.result?.result) {
+        setImageUrl(imageUrlResponse?.result?.result);
+      }
+    } catch (error) {
+      console.error('Failed to fetch plan details', error);
+    }
+  }, [generateKeyArray]);
+
+  useEffect(() => {
+    dataItenary && fetchImageUrl();
+  }, [dataItenary])
 
   return (
     <div className=''>
@@ -71,7 +94,7 @@ const Explore = () => {
                 className='group glass min-w-[280px] flex flex-col h-full bg-white border border-gray-200 shadow-sm rounded-xl'
               >
                 <div className='h-52 flex flex-col justify-center items-center bg-blue-600 rounded-t-xl'>
-                  <img src={travel} className='h-full w-full rounded-t-xl' alt='destination image' />
+                  <img src={item?.to in imageUrl ? imageUrl[item?.to]?.[0].url : travel} className='h-full w-full rounded-t-xl' alt='destination image' />
                 </div>
                 <div className='p-4 md:p-6'>
                   <span className='block mb-1 text-md font-semibold uppercase text-black'>
