@@ -90,14 +90,15 @@ export interface ITrip {
   trip_details: ITripDetails;
   travel_plan: Record<string, IDayPlan>;
   cost_summary: ISummary;
+  essentials_to_carry: Record<string, string[]>;
 }
 
 export interface ITPlan {
-  budget: string,
-  to: string,
-  from: string,
-  adults: string,
-  kids: string,
-  numberOfDays: string,
-  id: string,
+  budget: string;
+  to: string;
+  from: string;
+  adults: string;
+  kids: string;
+  numberOfDays: string;
+  id: string;
 }

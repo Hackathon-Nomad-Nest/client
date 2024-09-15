@@ -5,6 +5,8 @@ export enum routes {
   PRINT_PLAN_DETAIL = '/plan-detail/:planId/print',
   EXPLORE = '/explore',
   ITINERARY_DETAILS_FORM = '/itinerary-details-form',
+  CHECKLIST = '/checklist/:planId',
+  EDIT_ITINERARY_DETAILS = '/itinerary-details-form/:planId',
   MAP_ANIMATED = '/map-animated'
 }
 

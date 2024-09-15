@@ -71,14 +71,14 @@ const DayCard = (props: IDayCardProps) => {
       <VerticalTimeline>
         {Object.entries(restProps)?.map(([key, value], fieldIndex) => {
           const Icon = getIconComponent(key);
-          const activityName =
-            'activity' in value
-              ? value['activity']
-              : key === 'lunch' || key === 'dinner' || key === 'breakfast'
-              ? key
-              : '';
+          const activityName = typeof value !== 'string' && 'activity' in value ? value['activity'] : key;
           return (
-            <VerticalTimelineElement {...elementStyle} date={value?.time} icon={<Icon />} key={key + fieldIndex}>
+            <VerticalTimelineElement
+              {...elementStyle}
+              date={value?.time}
+              icon={<Icon />}
+              key={dayName + key + fieldIndex}
+            >
               <StyledCardContainer>
                 <StyledInfoContainer>
                   <StyledHeading>
@@ -96,7 +96,7 @@ const DayCard = (props: IDayCardProps) => {
                       {value?.price ? (
                         <StyledPrice>
                           Price:
-                          <StyledAmount>${value?.price}</StyledAmount>
+                          <StyledAmount>&#8377;{value?.price}</StyledAmount>
                         </StyledPrice>
                       ) : null}
                     </>
@@ -104,8 +104,11 @@ const DayCard = (props: IDayCardProps) => {
                 </StyledInfoContainer>
               </StyledCardContainer>
               <StyledImageContainer
-                src={activityName && imageUrl ? imageUrl[activityName]?.[0]?.url : DUMMY_ACTIVITY_IMAGE}
-                // src='https://images.pexels.com/photos/1381415/pexels-photo-1381415.jpeg?auto=compress&cs=tinysrgb&w=400'
+                src={
+                  activityName && imageUrl
+                    ? imageUrl[activityName]?.[0]?.url ?? DUMMY_ACTIVITY_IMAGE
+                    : DUMMY_ACTIVITY_IMAGE
+                }
                 alt={key + '-image'}
               />
               <ConfirmModal

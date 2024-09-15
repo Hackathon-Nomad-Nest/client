@@ -20,6 +20,7 @@ import { routes } from 'src/routes/routeConstants';
 import { PLAN_DESCRIPTION } from 'src/lib/constants';
 import { getImageUrl } from 'src/api/imageUrl';
 import { ITrip } from 'src/model/trip';
+import { cleanString } from 'src/lib/helper';
 
 const PlanDetail = () => {
   const [planDetail, setPlanDetails] = useState<ITrip>();
@@ -57,8 +58,8 @@ const PlanDetail = () => {
     try {
       const data = generateKeyArray();
       const imageUrlResponse = await getImageUrl(data);
-      if (imageUrlResponse?.response) {
-        setImageUrl(imageUrlResponse?.result);
+      if (imageUrlResponse?.result?.result) {
+        setImageUrl(imageUrlResponse?.result?.result);
       }
     } catch (error) {
       console.error('Failed to fetch plan details', error);
@@ -113,6 +114,10 @@ const PlanDetail = () => {
     }
   };
 
+  const editPlan = () => {
+    navigate(`/itinerary-details-form/${planId}`);
+  };
+
   return (
     <StyledContainer ref={divRef}>
       <StyledMainBanner $imageUrl={planDetail && imageUrl?.[planDetail?.trip_details?.destination]?.[0]?.url}>
@@ -121,8 +126,13 @@ const PlanDetail = () => {
             Trip from {planDetail?.trip_details?.origin} to {planDetail?.trip_details?.destination}
           </StyledMainHeading>
           <StyledText>{PLAN_DESCRIPTION}</StyledText>
-          <StyledText>Adults: {planDetail?.trip_details?.adults}</StyledText>
           <StyledButton onClick={generatePDF}>Download PDF</StyledButton>
+          {planId && (
+            <StyledButton onClick={() => navigate(routes.CHECKLIST.replace(':planId', planId))}>
+              View Essential Items to carry
+            </StyledButton>
+          )}
+          <StyledButton onClick={editPlan}>Edit your Plan</StyledButton>
         </StyledInfoBox>
       </StyledMainBanner>
       {!!planDetail && (
@@ -135,7 +145,7 @@ const PlanDetail = () => {
           />
           <StyledDaysContainer>
             {Object.entries(planDetail?.travel_plan)?.map(([key, value], index: number) => (
-              <Accordion heading={'Day ' + (index + 1)} key={'day-' + index} isDefaultOpen={index === 0}>
+              <Accordion heading={cleanString(key)} key={'day-' + index} isDefaultOpen={index === 0}>
                 <DayCard
                   {...(value as any)}
                   handlePlanDelete={handleDeletePlan}

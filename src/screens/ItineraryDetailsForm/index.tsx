@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { ItineraryDetailsFormValues, TravelMode, TripTypes } from 'src/lib/types';
 import {
@@ -33,7 +33,8 @@ import { AppDispatch } from 'src/redux';
 import { createItineraryPlan, getItineraryPlan } from 'src/redux/Slices/itineraryPlanSlice';
 import { getUserDetails } from 'src/redux/Slices/userSlice';
 import Loader from 'src/components/Loader';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import { getPlanById } from 'src/api/plan';
 
 const ItineraryDetailsForm: React.FC = () => {
   const minLimit = 0;
@@ -58,6 +59,7 @@ const ItineraryDetailsForm: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
   const { data: user } = useSelector(getUserDetails);
   const { isLoading: isItineraryPlanLoading, error } = useSelector(getItineraryPlan);
+  const { planId } = useParams();
 
   const handleMinChange = (e: React.ChangeEvent<HTMLInputElement>, step: number) => {
     const value = Math.min(Number(e.target.value), maxBudget - step); // Ensure min < max
@@ -83,6 +85,32 @@ const ItineraryDetailsForm: React.FC = () => {
       }
     }
   };
+
+  useEffect(() => {
+    (async () => {
+      if (planId) {
+        try {
+          const planResponse = await getPlanById(planId);
+          const [min, max] = planResponse.travelInput.budget.split('-');
+          setMinBudget(Number(min));
+          setMaxBudget(Number(max));
+          if (planResponse?.travelInput) {
+            setValue('to', planResponse.travelInput.to);
+            setValue('from', planResponse.travelInput.from);
+            setValue('adults', planResponse.travelInput.adults);
+            setValue('budget', planResponse.travelInput.budget);
+            setValue('kids', planResponse.travelInput.kids);
+            setValue('tripType', planResponse.travelInput.tripType);
+            setValue('numberOfDays', planResponse.travelInput.numberOfDays);
+            setValue('preferredTravelMode', planResponse.travelInput.preferredTravelMode);
+            setValue('startDate', new Date(planResponse.travelInput.trip_details.start_date));
+          }
+        } catch (error) {
+          console.error('Failed to fetch plan details', error);
+        }
+      }
+    })();
+  }, [planId, setValue]);
 
   if (isItineraryPlanLoading) {
     return <Loader text='Generating Your Plan...' />;

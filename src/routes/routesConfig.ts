@@ -8,6 +8,7 @@ const Support = lazy(() => import('src/screens/Support'));
 const ItineraryDetailsForm = lazy(() => import('../screens/ItineraryDetailsForm'));
 const PlanDetail = lazy(() => import('../screens/PlanDetail'));
 const PrintPlanDetail = lazy(() => import('../screens/PlanDetail/printPdf'));
+const Checklist = lazy(() => import('../screens/CheckList'));
 
 const routesConfig = (): Array<IRoutesConfigType> => {
   return [
@@ -47,8 +48,20 @@ const routesConfig = (): Array<IRoutesConfigType> => {
       isFooter: false,
     },
     {
+      path: routes.EDIT_ITINERARY_DETAILS,
+      component: ItineraryDetailsForm,
+      layout: routeAccess.PUBLIC,
+      isHeader: false,
+      isFooter: false,
+    },
+    {
       path: routes.MAP_ANIMATED,
       component: MAP_ANIMATED,
+      layout: routeAccess.PUBLIC,
+    },
+    {
+      path: routes.CHECKLIST,
+      component: Checklist,
       layout: routeAccess.PUBLIC,
     },
   ];
