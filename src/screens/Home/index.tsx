@@ -1,4 +1,5 @@
 // import { useNavigate } from "react-router-dom";
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import './style.css';
 import mount from '../../Assets/mountains-trimmed.mp4'
 import wing from '../../Assets/img/planeWing.jpg'
@@ -40,7 +41,7 @@ const Home = () => {
         {/* <!-- Title --> */}
         <div className="max-w-3xl mb-10 lg:mb-14">
           <h2 className="text-black font-semibold text-2xl md:text-4xl md:leading-tight">Our approach</h2>
-          <p className="mt-1 text-gray-800">This profound insight guides our comprehensive strategy — from meticulous research and strategic planning to the seamless execution of brand development and website or product deployment.</p>
+          <p className="mt-1 text-gray-800">Our approach to creating customized travel itinerary plans is centered around collecting user inputs, such as preferred destinations, budget, and travel dates. We then personalize the itinerary using this data, combined with the response from the integrated AI, to suggest tailored travel plans that best match the user's preferences.</p>
         </div>
         {/* <!-- End Title --> */}
 
@@ -76,8 +77,8 @@ const Home = () => {
               {/* <!-- Right Content --> */}
               <div className="grow pt-0.5 pb-8 sm:pb-12">
                 <p className="text-sm lg:text-base text-customTurquoiseGreen">
-                  <span className="text-gray-800">Market Research and Analysis:</span>
-                  Identify your target audience and understand their needs, preferences, and behaviors.
+                  <span className="text-gray-800">Location Selection : </span>
+                  Identify and choose destinations based on user preferences.
                 </p>
               </div>
               {/* <!-- End Right Content --> */}
@@ -99,8 +100,8 @@ const Home = () => {
               {/* <!-- Right Content --> */}
               <div className="grow pt-0.5 pb-8 sm:pb-12">
                 <p className="text-sm lg:text-base text-customTurquoiseGreen">
-                  <span className="text-gray-800">Product Development and Testing:</span>
-                  Develop digital products or services that address the needs and preferences of your target audience.
+                  <span className="text-gray-800">Types of Trip : </span>
+                  Determine the nature of the trip—relaxing, adventurous, etc.
                 </p>
               </div>
               {/* <!-- End Right Content --> */}
@@ -122,8 +123,8 @@ const Home = () => {
               {/* <!-- Right Content --> */}
               <div className="grow pt-0.5 pb-8 sm:pb-12">
                 <p className="text-sm md:text-base text-customTurquoiseGreen">
-                  <span className="text-gray-800">Marketing and Promotion:</span>
-                  Develop a comprehensive marketing strategy to promote your digital products or services.
+                  <span className="text-gray-800">Travel Party Size : </span>
+                  Gather information on the number of travelers.
                 </p>
               </div>
               {/* <!-- End Right Content --> */}
@@ -145,8 +146,77 @@ const Home = () => {
               {/* <!-- Right Content --> */}
               <div className="grow pt-0.5 pb-8 sm:pb-12">
                 <p className="text-sm md:text-base text-customTurquoiseGreen">
-                  <span className="text-gray-800">Launch and Optimization:</span>
-                  Launch your digital products or services to the market, closely monitoring their performance and user feedback.
+                  <span className="text-gray-800">Duration : </span>
+                  Specify the number of days for the itinerary.
+                </p>
+              </div>
+              {/* <!-- End Right Content --> */}
+            </div>
+            {/* <!-- End Item --> */}
+
+            {/* <!-- Item --> */}
+            <div className="flex gap-x-5 ms-1">
+              {/* <!-- Icon --> */}
+              <div className="relative last:after:hidden after:absolute after:top-8 after:bottom-0 after:start-4 after:w-px after:-translate-x-[0.5px] after:bg-neutral-800">
+                <div className="relative z-10 size-8 flex justify-center items-center">
+                  <span className="flex shrink-0 justify-center items-center size-8 border border-neutral-800 text-gray-800 font-semibold text-xs uppercase rounded-full">
+                    5
+                  </span>
+                </div>
+              </div>
+              {/* <!-- End Icon --> */}
+
+              {/* <!-- Right Content --> */}
+              <div className="grow pt-0.5 pb-8 sm:pb-12">
+                <p className="text-sm md:text-base text-customTurquoiseGreen">
+                  <span className="text-gray-800">Budget Range : </span>
+                  Request the user's budget range.
+                </p>
+              </div>
+              {/* <!-- End Right Content --> */}
+            </div>
+            {/* <!-- End Item --> */}
+
+            {/* <!-- Item --> */}
+            <div className="flex gap-x-5 ms-1">
+              {/* <!-- Icon --> */}
+              <div className="relative last:after:hidden after:absolute after:top-8 after:bottom-0 after:start-4 after:w-px after:-translate-x-[0.5px] after:bg-neutral-800">
+                <div className="relative z-10 size-8 flex justify-center items-center">
+                  <span className="flex shrink-0 justify-center items-center size-8 border border-neutral-800 text-gray-800 font-semibold text-xs uppercase rounded-full">
+                    6
+                  </span>
+                </div>
+              </div>
+              {/* <!-- End Icon --> */}
+
+              {/* <!-- Right Content --> */}
+              <div className="grow pt-0.5 pb-8 sm:pb-12">
+                <p className="text-sm md:text-base text-customTurquoiseGreen">
+                  <span className="text-gray-800">Mode of Transport : </span>
+                  Determine preferred modes of transportation.
+                </p>
+              </div>
+              {/* <!-- End Right Content --> */}
+            </div>
+            {/* <!-- End Item --> */}
+
+            {/* <!-- Item --> */}
+            <div className="flex gap-x-5 ms-1">
+              {/* <!-- Icon --> */}
+              <div className="relative last:after:hidden after:absolute after:top-8 after:bottom-0 after:start-4 after:w-px after:-translate-x-[0.5px] after:bg-neutral-800">
+                <div className="relative z-10 size-8 flex justify-center items-center">
+                  <span className="flex shrink-0 justify-center items-center size-8 border border-neutral-800 text-gray-800 font-semibold text-xs uppercase rounded-full">
+                    7
+                  </span>
+                </div>
+              </div>
+              {/* <!-- End Icon --> */}
+
+              {/* <!-- Right Content --> */}
+              <div className="grow pt-0.5 pb-8 sm:pb-12">
+                <p className="text-sm md:text-base text-customTurquoiseGreen">
+                  <span className="text-gray-800">Personalized Itinerary Creation : </span>
+                  Using these details to craft a tailored travel itinerary that meets user preferences and requirements.
                 </p>
               </div>
               {/* <!-- End Right Content --> */}
@@ -154,8 +224,7 @@ const Home = () => {
             {/* <!-- End Item --> */}
 
             <a className="group inline-flex items-center gap-x-2 py-2 px-3 bg-customTeal font-medium text-sm text-neutral-100 rounded-full focus:outline-none" href="#">
-              <svg className="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path><path className="opacity-0 group-hover:opacity-100 group-focus:opacity-100 group-hover:delay-100 transition" d="M14.05 2a9 9 0 0 1 8 7.94"></path><path className="opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition" d="M14.05 6A5 5 0 0 1 18 10"></path></svg>
-              Schedule a call
+              Create Itinerary <AddCircleOutlineIcon />
             </a>
           </div>
           {/* <!-- End Timeline --> */}
