@@ -262,5 +262,4 @@ export const PLAN_DESCRIPTION =
 export const DUMMY_PLAN_IMAGE =
   'https://images.pexels.com/photos/1285625/pexels-photo-1285625.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1';
 
-export const DUMMY_ACTIVITY_IMAGE =
-  'https://images.pexels.com/photos/1381415/pexels-photo-1381415.jpeg?auto=compress&cs=tinysrgb&w=400';
+export const DUMMY_ACTIVITY_IMAGE = 'https://www.pexels.com/photo/woman-and-man-riding-on-motorcycle-2174656/';

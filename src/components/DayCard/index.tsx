@@ -99,7 +99,7 @@ const DayCard = (props: IDayCardProps) => {
                 </StyledInfoContainer>
               </StyledCardContainer>
               <StyledImageContainer
-                src={activityName ? imageUrl[activityName]?.[0]?.url : DUMMY_ACTIVITY_IMAGE}
+                src={activityName && imageUrl ? imageUrl[activityName]?.[0]?.url : DUMMY_ACTIVITY_IMAGE}
                 // src='https://images.pexels.com/photos/1381415/pexels-photo-1381415.jpeg?auto=compress&cs=tinysrgb&w=400'
                 alt={key + '-image'}
               />
