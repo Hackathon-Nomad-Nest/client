@@ -14,8 +14,10 @@ import LoadingButton from 'src/sharedComponents/LoadingButton';
 import Typography from 'src/sharedComponents/Typography';
 
 import { isValidEmail } from 'src/lib/helper';
-import { BoxWithBackground, BoxWithHiddenScrollbar } from './style';
+import { BoxWithHiddenScrollbar } from './style';
 import { submitSupportFormData } from 'src/api/supportForm';
+import SupportImage from 'src/assets/Backgrounds/support-page.jpg';
+
 
 export default function AccordionExpandIcon() {
   const [email, setEmail] = useState<string>('');
@@ -74,8 +76,10 @@ export default function AccordionExpandIcon() {
 
   return (
     <>
-      <BoxWithBackground />
-      <Box className="flex m-16" sx={{ gap: '1rem' }}>
+      <Box className="flex" sx={{ gap: '1rem', margin: '16px 0px' }}>
+        <div className="bg-transparent">
+          <img src={SupportImage} alt="" className='absolute -z-10 top-0 w-full h-full' />
+        </div>
         {/* FAQs */}
         <BoxWithHiddenScrollbar className="flex-column flex-1 oveflow-y-auto">
           {FAQs.map((faq: IFaq) => (
