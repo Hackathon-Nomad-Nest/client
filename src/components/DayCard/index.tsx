@@ -2,7 +2,7 @@ import { IDayPlan } from 'src/model/trip';
 import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
 import 'react-vertical-timeline-component/style.min.css';
 import { cleanString } from 'src/lib/helper';
-import { getIconComponent } from 'src/lib/constants';
+import { DUMMY_ACTIVITY_IMAGE, getIconComponent } from 'src/lib/constants';
 import { StyledAmount } from '../PlanHeader/styles';
 import {
   StyledButton,
@@ -21,14 +21,20 @@ import { AddCircleOutline } from '@mui/icons-material';
 import AddModal from '../AddModal';
 import { StyledText } from 'src/screens/PlanDetail/styles';
 
+export interface IImageProps {
+  url: string;
+  alt: string;
+}
+
 interface IDayCardProps extends IDayPlan {
   handlePlanDelete: (dayName: string, key: string) => void;
   handleAddPlan: (dayName: string, key: string, value: string) => void;
+  imageUrl: Record<string, IImageProps[]>;
   dayName: string;
 }
 
 const DayCard = (props: IDayCardProps) => {
-  const { handlePlanDelete, handleAddPlan, dayName, ...restProps } = props;
+  const { handlePlanDelete, handleAddPlan, imageUrl, dayName, ...restProps } = props;
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
 
@@ -63,8 +69,9 @@ const DayCard = (props: IDayCardProps) => {
   return (
     <>
       <VerticalTimeline>
-        {Object.entries(restProps).map(([key, value], fieldIndex) => {
+        {Object.entries(restProps)?.map(([key, value], fieldIndex) => {
           const Icon = getIconComponent(key);
+          const activityName = 'activity' in value ? value['activity'] : '';
           return (
             <VerticalTimelineElement {...elementStyle} date={value?.time} icon={<Icon />} key={key + fieldIndex}>
               <StyledCardContainer>
@@ -92,7 +99,8 @@ const DayCard = (props: IDayCardProps) => {
                 </StyledInfoContainer>
               </StyledCardContainer>
               <StyledImageContainer
-                src='https://images.pexels.com/photos/1381415/pexels-photo-1381415.jpeg?auto=compress&cs=tinysrgb&w=400'
+                src={activityName ? imageUrl[activityName]?.[0]?.url : DUMMY_ACTIVITY_IMAGE}
+                // src='https://images.pexels.com/photos/1381415/pexels-photo-1381415.jpeg?auto=compress&cs=tinysrgb&w=400'
                 alt={key + '-image'}
               />
               <ConfirmModal

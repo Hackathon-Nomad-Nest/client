@@ -69,7 +69,25 @@ export interface IDayPlan {
   check_out?: ICheckOutDetails;
 }
 
+export interface ISummary {
+  total_food_cost: number;
+  total_stay_cost: number;
+  total_transportation_cost: number;
+  total_activity_cost: number;
+  total_entry_fee: number;
+  total_trip_cost: number;
+  description: {
+    total_food_cost: string;
+    total_stay_cost: string;
+    total_transportation_cost: string;
+    total_activity_cost: string;
+    total_entry_fee: string;
+    total_trip_cost: string;
+  };
+}
+
 export interface ITrip {
   trip_details: ITripDetails;
   travel_plan: Record<string, IDayPlan>;
+  cost_summary: ISummary;
 }
