@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import AcUnitIcon from '@mui/icons-material/AcUnit';
 import {
   StyledChecklist,
@@ -13,6 +13,9 @@ import {
   StyledTitle,
 } from './styles';
 import { cleanString } from 'src/lib/helper';
+import { ITrip } from 'src/model/trip';
+import { useParams } from 'react-router-dom';
+import { getPlanById } from 'src/api/plan';
 
 const essentials_to_carry = {
   general: [
@@ -30,13 +33,33 @@ const essentials_to_carry = {
 };
 
 const ChecklistComponent: React.FC = () => {
+  const [planDetail, setPlanDetails] = useState<ITrip>();
+  const { planId } = useParams();
+
+  const fetchPlanDetails = useCallback(async (id: string) => {
+    try {
+      const planResponse = await getPlanById(id);
+      if (planResponse?.response) {
+        setPlanDetails(planResponse.response);
+      }
+    } catch (error) {
+      console.error('Failed to fetch plan details', error);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (planId) {
+      fetchPlanDetails(planId);
+    }
+  }, [planId]);
+
   return (
     <StyledContainer>
       <StyledHeader>
         <StyledTitle>Essentials to Carry</StyledTitle>
       </StyledHeader>
       <StyledMainContent>
-        {Object.entries(essentials_to_carry).map(([category, items]) => (
+        {Object.entries(planDetail?.essentials_to_carry ?? essentials_to_carry).map(([category, items]) => (
           <StyledSection key={category}>
             <StyledSectionTitle>{cleanString(category)}</StyledSectionTitle>
             <StyledChecklist>

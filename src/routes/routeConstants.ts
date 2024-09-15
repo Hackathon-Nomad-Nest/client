@@ -5,7 +5,8 @@ export enum routes {
   PRINT_PLAN_DETAIL = '/plan-detail/:planId/print',
   EXPLORE = '/explore',
   ITINERARY_DETAILS_FORM = '/itinerary-details-form',
-  MAPANIMATED = '/map-animated'
+  MAPANIMATED = '/map-animated',
+  CHECKLIST = '/checklist/:planId',
 }
 
 export enum routeAccess {

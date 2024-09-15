@@ -9,6 +9,7 @@ const Support = lazy(() => import('src/screens/Support'));
 const ItineraryDetailsForm = lazy(() => import('../screens/ItineraryDetailsForm'));
 const PlanDetail = lazy(() => import('../screens/PlanDetail'));
 const PrintPlanDetail = lazy(() => import('../screens/PlanDetail/printPdf'));
+const Checklist = lazy(() => import('../screens/CheckList'));
 
 const routesConfig = (): Array<IRoutesConfigType> => {
   return [
@@ -50,6 +51,11 @@ const routesConfig = (): Array<IRoutesConfigType> => {
     {
       path: routes.MAPANIMATED,
       component: MapAnimated,
+      layout: routeAccess.PUBLIC,
+    },
+    {
+      path: routes.CHECKLIST,
+      component: Checklist,
       layout: routeAccess.PUBLIC,
     },
   ];

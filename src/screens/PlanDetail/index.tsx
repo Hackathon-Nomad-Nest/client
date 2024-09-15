@@ -123,6 +123,11 @@ const PlanDetail = () => {
           </StyledMainHeading>
           <StyledText>{PLAN_DESCRIPTION}</StyledText>
           <StyledButton onClick={generatePDF}>Download PDF</StyledButton>
+          {planId && (
+            <StyledButton onClick={() => navigate(routes.CHECKLIST.replace(':planId', planId))}>
+              View Essential Items to carry
+            </StyledButton>
+          )}
         </StyledInfoBox>
       </StyledMainBanner>
       {!!planDetail && (
