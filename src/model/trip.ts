@@ -44,7 +44,7 @@ export interface IFoodInfo {
 }
 
 export interface IDayPlan {
-    departure: IDeparture;
+    departure?: IDeparture;
     check_in?: ICheckInDetails;
     morning_activity?: IActivity;
     afternoon_activity?: IActivity;

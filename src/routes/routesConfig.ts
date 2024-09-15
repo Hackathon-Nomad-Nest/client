@@ -6,6 +6,7 @@ import { IRoutesConfigType } from 'src/lib/types';
 
 const Home = lazy(() => import('../screens/Home'));
 const Support = lazy(() => import('src/screens/Support'));
+const PlanDetail = lazy(() => import('../screens/PlanDetail'));
 
 const routesConfig = (): Array<IRoutesConfigType> => {
 
@@ -20,6 +21,11 @@ const routesConfig = (): Array<IRoutesConfigType> => {
       component: Support,
       layout: routeAccess.PUBLIC,
       isHeader: false,
+    },{
+      path: routes.PLAN_DETAIL,
+      component: PlanDetail,
+      layout: routeAccess.PUBLIC,
+      isHeader: false
     },
   ];
 };

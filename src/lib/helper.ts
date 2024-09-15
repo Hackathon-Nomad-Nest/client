@@ -113,3 +113,9 @@ export function filterObjectKeys<T>(obj: any, keys: Array<keyof T>): DeepPartial
 
   return result;
 }
+
+export const cleanString = (input: string) => {
+  const words = input.split('_').map((word) => word.charAt(0).toUpperCase() + word.slice(1));
+
+  return words.join(' ');
+};

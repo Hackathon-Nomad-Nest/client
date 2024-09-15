@@ -1,4 +1,5 @@
 export default {
   HOME: '/',
-  LOGIN: '/v1/auth/login',
+  LOGIN: '/auth/login',
+  GET_PLAN_BY_ID: '/itinerary-plan'
 };

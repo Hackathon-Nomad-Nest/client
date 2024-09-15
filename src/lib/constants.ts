@@ -1,3 +1,4 @@
+import { ActivityIcon, BreakfastIcon, CheckInIcon, DepartureIcon, LunchIcon } from 'src/Assets/Icons';
 import { IFaq } from './types';
 
 export const FAQs: IFaq[] = [
@@ -35,4 +36,29 @@ export const FAQs: IFaq[] = [
 
 export const STORAGE_KEYS = {
   userKey: 'userKey',
+};
+
+export const getIconComponent = (key: string) => {
+  switch (key) {
+    case 'departure':
+      return DepartureIcon;
+    case 'lunch':
+      return LunchIcon;
+    case 'breakfast':
+      return BreakfastIcon;
+    case 'dinner':
+      return LunchIcon;
+    case 'check_in':
+      return CheckInIcon;
+    case 'check_out':
+      return CheckInIcon;
+    case 'morning_activity':
+      return ActivityIcon;
+    case 'afternoon_activity':
+      return ActivityIcon;
+    case 'evening_activity':
+      return ActivityIcon;
+    default:
+      return DepartureIcon;
+  }
 };
