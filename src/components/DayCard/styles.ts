@@ -15,6 +15,7 @@ export const StyledInfoContainer = styled.div`
 export const StyledImageContainer = styled.img`
   width: 100%;
   min-height: 250px;
+  max-height: 400px;
   height: auto;
   border-radius: 8px;
 `;

@@ -145,13 +145,13 @@ const PlanDetail = () => {
           />
           <StyledDaysContainer>
             {Object.entries(planDetail?.travel_plan)?.map(([key, value], index: number) => (
-              <Accordion heading={cleanString(key)} key={'day-' + index} isDefaultOpen={index === 0}>
+              <Accordion heading={cleanString(key)} key={key} isDefaultOpen={index === 0}>
                 <DayCard
-                  {...(value as any)}
+                  {...value}
                   handlePlanDelete={handleDeletePlan}
                   dayName={key}
                   handleAddPlan={handleAddPlan}
-                  imageUrl={imageUrl}
+                  imageUrl={imageUrl ?? {}}
                 />
               </Accordion>
             ))}

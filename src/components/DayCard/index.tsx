@@ -33,8 +33,7 @@ interface IDayCardProps extends IDayPlan {
   dayName: string;
 }
 
-const DayCard = (props: IDayCardProps) => {
-  const { handlePlanDelete, handleAddPlan, imageUrl, dayName, ...restProps } = props;
+const DayCard = ({ handlePlanDelete, handleAddPlan, imageUrl, dayName, ...restProps }: IDayCardProps) => {
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
 
