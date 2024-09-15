@@ -5,6 +5,6 @@ export const getImageUrl = (imageKeys: string[]) => {
   return apiRequest({
     method: 'GET',
     url: `${apiEndpoints.IMAGE_URL}`,
-    config: { params: { queries: imageKeys } },
+    config: { params: { queries: imageKeys.join(",") } },
   });
 };
