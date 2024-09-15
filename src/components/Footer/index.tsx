@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <div>
       {/* <!-- ========== FOOTER ========== --> */}
-      <footer className="mt-auto bg-gray-900 w-full">
+      <footer className="mt-auto bg-customTeal w-full">
         <div className="mt-auto w-full max-w-[85rem] py-10 px-4 sm:px-6 lg:px-8 lg:pt-20 mx-auto">
           {/* <!-- Grid --> */}
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
