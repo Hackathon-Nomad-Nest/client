@@ -11,12 +11,13 @@ import {
   StyledText,
 } from './styles';
 import Accordion from 'src/components/Accordion';
-import DayCard from 'src/components/DayCard';
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { addPlanById, removePlanById, getPlanById } from 'src/api/plan';
+import { getPlanById } from 'src/api/plan';
 import { useNavigate, useParams } from 'react-router-dom';
+import html2pdf from 'html2pdf.js';
 import { StyledButton } from 'src/components/ConfirmModal/styles';
-import { routes } from 'src/routes/routeConstants';
+import PrintDayCard from 'src/components/DayCard/printCard';
+import { IDayPlan } from 'src/model/trip';
 
 const dummyData1 = {
   trip_details: {
@@ -222,6 +223,7 @@ const PlanDetail = () => {
   const fetchPlanDetails = useCallback(async (id: string) => {
     try {
       const planResponse = await getPlanById(id);
+      console.log('plan response----------------->', planResponse);
       if (planResponse?.response) {
         setPlanDetails(planResponse.response);
       }
@@ -230,47 +232,25 @@ const PlanDetail = () => {
     }
   }, []);
 
-  const handleDeletePlan = useCallback(
-    async (dayName: string, key: string) => {
-      console.log('delete----------->', dayName, key);
-      try {
-        const data = { day: dayName, keyName: key };
-        const deleteResponse = planId && (await removePlanById(planId, data));
-        if (deleteResponse?.response) {
-          setPlanDetails(deleteResponse?.response);
-        }
-      } catch (error) {
-        console.error('Failed to add plan', error);
-      }
-    },
-    [planId]
-  );
-
-  const handleAddPlan = useCallback(
-    async (dayName: string, key: string, value: string) => {
-      try {
-        const data = { day: dayName, keyName: key, value };
-        const addResponse = planId && (await addPlanById(planId, data));
-        if (addResponse?.response) {
-          setPlanDetails(addResponse?.response);
-        }
-      } catch (error) {
-        console.error('Failed to add plan', error);
-      }
-    },
-    [planId]
-  );
-
   useEffect(() => {
     if (planId) {
-      fetchPlanDetails(planId);
+      fetchPlanDetails(planId).then(generatePDF);
     }
   }, [planId]);
 
   const generatePDF = () => {
-    if (planId) {
-      navigate(routes?.PRINT_PLAN_DETAIL.replace(':planId', planId));
-    }
+    const options = {
+      margin: 5,
+      filename: `${planDetail?.trip_details?.origin} to ${planDetail?.trip_details?.destination}.pdf`,
+    };
+
+    setTimeout(() => {
+      html2pdf()
+        .from(divRef.current)
+        .set(options)
+        .save()
+        .then(() => navigate(-1));
+    }, 500);
   };
 
   return (
@@ -292,14 +272,9 @@ const PlanDetail = () => {
         expected_budget_range={planDetail?.trip_details?.expected_budget_range}
       />
       <StyledDaysContainer>
-        {Object.entries(planDetail?.travel_plan)?.map(([key, value], index: number) => (
-          <Accordion heading={'Day ' + (index + 1)} key={'day-' + index} isDefaultOpen={index === 0}>
-            <DayCard
-              {...(value as any)}
-              handlePlanDelete={handleDeletePlan}
-              dayName={key}
-              handleAddPlan={handleAddPlan}
-            />
+        {Object.values(planDetail?.travel_plan as IDayPlan[])?.map((day: IDayPlan, index: number) => (
+          <Accordion heading={'Day ' + (index + 1)} key={'day-' + index} isDefaultOpen={true}>
+            <PrintDayCard {...day} />
           </Accordion>
         ))}
       </StyledDaysContainer>

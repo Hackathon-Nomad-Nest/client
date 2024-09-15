@@ -48,3 +48,9 @@ export interface IApproachStep {
   title: string;
   description: string;
 }
+
+export interface IMusicCard {
+  name: string;
+  artist: string;
+  details?: string;
+}

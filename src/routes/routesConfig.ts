@@ -7,6 +7,7 @@ const Home = lazy(() => import('../screens/Home'));
 const Support = lazy(() => import('src/screens/Support'));
 const ItineraryDetailsForm = lazy(() => import('../screens/ItineraryDetailsForm'));
 const PlanDetail = lazy(() => import('../screens/PlanDetail'));
+const PrintPlanDetail = lazy(() => import('../screens/PlanDetail/printPdf'));
 
 const routesConfig = (): Array<IRoutesConfigType> => {
   return [
@@ -23,6 +24,12 @@ const routesConfig = (): Array<IRoutesConfigType> => {
     {
       path: routes.PLAN_DETAIL,
       component: PlanDetail,
+      layout: routeAccess.PUBLIC,
+      isHeader: false,
+    },
+    {
+      path: routes.PRINT_PLAN_DETAIL,
+      component: PrintPlanDetail,
       layout: routeAccess.PUBLIC,
       isHeader: false,
     },
