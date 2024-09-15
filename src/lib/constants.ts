@@ -1,5 +1,5 @@
 import { ActivityIcon, BreakfastIcon, CheckInIcon, DepartureIcon, LunchIcon } from 'src/Assets/Icons';
-import { IFaq } from './types';
+import { IApproachStep, IFaq } from './types';
 
 export const FAQs: IFaq[] = [
   {
@@ -31,6 +31,44 @@ export const FAQs: IFaq[] = [
     question: 'Do you offer travel insurance?',
     answer:
       'Our website does not offer travel insurance directly as of now but we are considering the same in future release.',
+  },
+];
+
+export const itinerarySteps: IApproachStep[] = [
+  {
+    stepNo: 1,
+    title: 'Location Selection',
+    description: 'Identify and choose destinations based on user preferences.',
+  },
+  {
+    stepNo: 2,
+    title: 'Types of Trip',
+    description: 'Determine the nature of the trip—relaxing, adventurous, etc.',
+  },
+  {
+    stepNo: 3,
+    title: 'Travel Party Size',
+    description: 'Gather information on the number of travelers.',
+  },
+  {
+    stepNo: 4,
+    title: 'Duration',
+    description: 'Specify the number of days for the itinerary.',
+  },
+  {
+    stepNo: 5,
+    title: 'Budget Range',
+    description: "Request the user's budget range.",
+  },
+  {
+    stepNo: 6,
+    title: 'Mode of Transport',
+    description: 'Determine preferred modes of transportation.',
+  },
+  {
+    stepNo: 7,
+    title: 'Duration',
+    description: 'Specify the number of days for the itinerary.',
   },
 ];
 
