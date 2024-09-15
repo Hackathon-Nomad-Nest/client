@@ -114,6 +114,10 @@ const PlanDetail = () => {
     }
   };
 
+  const editPlan = () => {
+    navigate(`/itinerary-details-form/${planId}`);
+  };
+
   return (
     <StyledContainer ref={divRef}>
       <StyledMainBanner $imageUrl={planDetail && imageUrl?.[planDetail?.trip_details?.destination]?.[0]?.url}>
@@ -128,6 +132,7 @@ const PlanDetail = () => {
               View Essential Items to carry
             </StyledButton>
           )}
+          <StyledButton onClick={editPlan}>Edit your Plan</StyledButton>
         </StyledInfoBox>
       </StyledMainBanner>
       {!!planDetail && (
