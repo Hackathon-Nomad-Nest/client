@@ -14,7 +14,7 @@ import {
   StyledPrice,
 } from './styles';
 import theme from 'src/styles/theme';
-import DeleteIcon from '@mui/icons-material/Delete';
+// import DeleteIcon from '@mui/icons-material/Delete';
 import ConfirmModal from '../ConfirmModal';
 import { useState } from 'react';
 import { AddCircleOutline } from '@mui/icons-material';
@@ -82,7 +82,7 @@ const DayCard = ({ handlePlanDelete, handleAddPlan, imageUrl, dayName, ...restPr
                 <StyledInfoContainer>
                   <StyledHeading>
                     {cleanString(key)}
-                    <DeleteIcon onClick={() => setIsDeleteModalOpen(true)} sx={{ cursor: 'pointer' }} />
+                    {/* <DeleteIcon onClick={() => setIsDeleteModalOpen(true)} sx={{ cursor: 'pointer' }} /> */}
                   </StyledHeading>
                   {typeof value == 'string' ? (
                     <StyledText>{value}</StyledText>
