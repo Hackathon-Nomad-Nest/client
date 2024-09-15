@@ -15,6 +15,7 @@ import Typography from 'src/sharedComponents/Typography';
 
 import { isValidEmail } from 'src/lib/helper';
 import { BoxWithBackground, BoxWithHiddenScrollbar } from './style';
+import { submitSupportFormData } from 'src/api/supportForm';
 
 export default function AccordionExpandIcon() {
   const [email, setEmail] = useState<string>('');
@@ -61,8 +62,7 @@ export default function AccordionExpandIcon() {
         email,
         query,
       };
-      console.log('formData', formData);
-      // Simulate async request (e.g., send data to backend)
+      await submitSupportFormData(formData);
       setEmail('');
       setQuery('');
     } catch (error) {
