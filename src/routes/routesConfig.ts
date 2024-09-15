@@ -5,6 +5,7 @@ import Explore from 'src/screens/Explore';
 
 const Home = lazy(() => import('../screens/Home'));
 const Support = lazy(() => import('src/screens/Support'));
+const ItineraryDetailsForm = lazy(() => import('../screens/ItineraryDetailsForm'));
 const PlanDetail = lazy(() => import('../screens/PlanDetail'));
 
 const routesConfig = (): Array<IRoutesConfigType> => {
@@ -30,6 +31,13 @@ const routesConfig = (): Array<IRoutesConfigType> => {
       component: Explore,
       layout: routeAccess.PUBLIC,
       isHeader: true,
+    },
+    {
+      path: routes.ITINERARY_DETAILS_FORM,
+      component: ItineraryDetailsForm,
+      layout: routeAccess.PUBLIC,
+      isHeader: false,
+      isFooter: false,
     },
   ];
 };
