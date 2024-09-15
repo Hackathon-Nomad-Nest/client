@@ -12,6 +12,7 @@ import { getItenaryPlan } from 'src/api/plan';
 import { ItineraryDetailsValues } from 'src/lib/types';
 import { getImageUrl } from 'src/api/imageUrl';
 import { IImageProps } from 'src/components/DayCard';
+import { removeDuplicates } from 'src/lib/helper';
 
 const Explore = () => {
   const [dataItenary, setDataItenary] = useState<ItineraryDetailsValues[]>();
@@ -19,7 +20,7 @@ const Explore = () => {
 
   const generateKeyArray = useCallback(() => {
     const keyArray = dataItenary?.map((plan) => plan.to);
-    return keyArray ?? [];
+    return removeDuplicates(keyArray ?? []);
   }, [dataItenary]);
 
   const fetchPlanDetails = useCallback(async () => {
@@ -28,7 +29,7 @@ const Explore = () => {
       console.log(planResponse);
       setDataItenary(
         planResponse.results
-          .map((res: { travelInput: ItineraryDetailsValues }) => res.travelInput)
+          .map((res: { travelInput: ItineraryDetailsValues; id: string }) => ({ ...res.travelInput, id: res.id }))
           .filter((details: ItineraryDetailsValues) => details)
       );
     } catch (error) {
@@ -53,8 +54,8 @@ const Explore = () => {
   }, [generateKeyArray]);
 
   useEffect(() => {
-    dataItenary && fetchImageUrl();
-  }, [dataItenary])
+    fetchImageUrl();
+  }, [dataItenary, fetchImageUrl]);
 
   return (
     <div className=''>
@@ -94,7 +95,11 @@ const Explore = () => {
                 className='group glass min-w-[280px] flex flex-col h-full bg-white border border-gray-200 shadow-sm rounded-xl'
               >
                 <div className='h-52 flex flex-col justify-center items-center bg-blue-600 rounded-t-xl'>
-                  <img src={item?.to in imageUrl ? imageUrl[item?.to]?.[0].url : travel} className='h-full w-full rounded-t-xl' alt='destination image' />
+                  <img
+                    src={item.to in imageUrl ? imageUrl[item.to]?.[0].url : travel}
+                    className='h-full w-full rounded-t-xl'
+                    alt='destination image'
+                  />
                 </div>
                 <div className='p-4 md:p-6'>
                   <span className='block mb-1 text-md font-semibold uppercase text-black'>
@@ -102,27 +107,27 @@ const Explore = () => {
                     {item.budget}
                   </span>
                   <p className='mt-3 text-gray-900 text-md'>
-                    From: <strong>{item?.from}</strong> - To <strong>{item?.to}</strong>
+                    From: <strong>{item.from}</strong> - To <strong>{item.to}</strong>
                   </p>
                   <p className='mt-3 text-gray-900 text-md'>
-                    <PersonIcon fontSize='small' /> {item?.adults} People
+                    <PersonIcon fontSize='small' /> {item.adults} People
                   </p>
                   <p className='mt-3 text-gray-900 text-md'>
-                    <ChildCareIcon fontSize='small' /> {item?.kids} Kids
+                    <ChildCareIcon fontSize='small' /> {item.kids} Kids
                   </p>
                   <p className='mt-3 text-gray-900 text-md'>
-                    <EditCalendarIcon fontSize='small' /> {item?.numberOfDays} Days
+                    <EditCalendarIcon fontSize='small' /> {item.numberOfDays} Days
                   </p>
                 </div>
                 <div className='mt-auto flex border-t border-gray-200 divide-x divide-gray-200'>
                   <Link
-                    to={routes.ITINERARY_DETAILS_FORM}
+                    to={`/itinerary-details-form/${item.id}`}
                     className='w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-es-xl bg-white text-gray-800 shadow-sm hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none'
                   >
                     Customize
                   </Link>
                   <Link
-                    to={`${routes.PLAN_DETAIL}/${item.id}`}
+                    to={`/plan-detail/${item.id}`}
                     className='w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-ee-xl bg-white text-gray-800 shadow-sm hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none'
                   >
                     View
