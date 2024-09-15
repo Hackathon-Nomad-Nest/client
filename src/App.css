@@ -48,6 +48,10 @@
   cursor: pointer;
 }
 
+.oveflow-y-auto {
+  overflow-y: auto;
+}
+
 ::-webkit-scrollbar-track {
   border-radius: 3px;
   background-color: rgba(209, 211, 220, 0.5);
