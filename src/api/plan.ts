@@ -4,7 +4,7 @@ import apiRequest from './api';
 interface IPlanChangeProps {
   day: string;
   keyName: string;
-  value: string;
+  newValue: string;
 }
 
 export const getPlanById = (id: string) => {

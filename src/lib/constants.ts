@@ -255,3 +255,12 @@ export const navRoutes = [
   { id: 1, path: routes.EXPLORE, label: 'Explore' },
   { id: 2, path: routes.SUPPORT, label: 'Support' },
 ];
+
+export const PLAN_DESCRIPTION =
+  'Welcome to your personalized travel itinerary. Our meticulously crafted plan ensures you make the most of your journey with a detailed schedule of activities, accommodations, and dining experiences. From the moment you set off, enjoy a seamless travel experience with our curated recommendations for each day. Whether it’s a relaxing beach day, an adventurous hike, or a cultural exploration, our itinerary covers every detail to ensure a memorable trip. Embrace the convenience of having your daily plans organized, and focus on creating unforgettable memories on your adventure!';
+
+export const DUMMY_PLAN_IMAGE =
+  'https://images.pexels.com/photos/1285625/pexels-photo-1285625.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1';
+
+export const DUMMY_ACTIVITY_IMAGE =
+  'https://images.pexels.com/photos/2166553/pexels-photo-2166553.jpeg?auto=compress&cs=tinysrgb&w=400';

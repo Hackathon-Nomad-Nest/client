@@ -49,6 +49,11 @@ const userSlice = createSlice({
       const user = getItem<IUser['data']>(STORAGE_KEYS.userKey);
       state.data = user;
     },
+    logoutUser: (state) => {
+      state.data = null;
+      state.error = null;
+      setItem<IUser['data']>(STORAGE_KEYS.userKey, null);
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(loginUser.pending, (state) => {
@@ -71,6 +76,6 @@ const userSlice = createSlice({
 
 export const getUserDetails = (state: RootState) => state.user;
 
-export const { fetchUser } = userSlice.actions;
+export const { fetchUser, logoutUser } = userSlice.actions;
 
 export default userSlice.reducer;
