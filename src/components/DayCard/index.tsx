@@ -19,6 +19,7 @@ import ConfirmModal from '../ConfirmModal';
 import { useState } from 'react';
 import { AddCircleOutline } from '@mui/icons-material';
 import AddModal from '../AddModal';
+import { StyledText } from 'src/screens/PlanDetail/styles';
 
 interface IDayCardProps extends IDayPlan {
   handlePlanDelete: (dayName: string, key: string) => void;
@@ -69,19 +70,25 @@ const DayCard = (props: IDayCardProps) => {
               <StyledCardContainer>
                 <StyledInfoContainer>
                   <StyledHeading>
-                    {cleanString(key)}{' '}
+                    {cleanString(key)}
                     <DeleteIcon onClick={() => setIsDeleteModalOpen(true)} sx={{ cursor: 'pointer' }} />
                   </StyledHeading>
-                  <StyledDescription>{value?.description}</StyledDescription>
-                  {Object.entries(value).map(([fieldKey, fieldValue], fieldIndex) =>
-                    renderFields(fieldKey, fieldValue as string, fieldIndex)
+                  {typeof value == 'string' ? (
+                    <StyledText>{value}</StyledText>
+                  ) : (
+                    <>
+                      <StyledDescription>{value?.description}</StyledDescription>
+                      {Object.entries(value).map(([fieldKey, fieldValue], fieldIndex) =>
+                        renderFields(fieldKey, fieldValue as string, fieldIndex)
+                      )}
+                      {value?.price ? (
+                        <StyledPrice>
+                          Price:
+                          <StyledAmount>${value?.price}</StyledAmount>
+                        </StyledPrice>
+                      ) : null}
+                    </>
                   )}
-                  {value?.price ? (
-                    <StyledPrice>
-                      Price:
-                      <StyledAmount>${value?.price}</StyledAmount>
-                    </StyledPrice>
-                  ) : null}
                 </StyledInfoContainer>
               </StyledCardContainer>
               <StyledImageContainer

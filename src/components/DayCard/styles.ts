@@ -30,6 +30,8 @@ export const StyledHeading = styled.h3`
   align-items: center;
   justify-content: space-between;
   width: 100%;
+  font-weight: 600;
+  font-size: 24px;
 `;
 
 export const StyledPrice = styled.div`
