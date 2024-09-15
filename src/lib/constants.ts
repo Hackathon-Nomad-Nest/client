@@ -1,3 +1,4 @@
+import { ActivityIcon, BreakfastIcon, CheckInIcon, DepartureIcon, LunchIcon } from 'src/Assets/Icons';
 import { IApproachStep, IFaq } from './types';
 
 export const FAQs: IFaq[] = [
@@ -41,8 +42,8 @@ export const itinerarySteps: IApproachStep[] = [
   },
   {
     stepNo: 2,
-    title: "Types of Trip",
-    description: "Determine the nature of the trip—relaxing, adventurous, etc."
+    title: 'Types of Trip',
+    description: 'Determine the nature of the trip—relaxing, adventurous, etc.',
   },
   {
     stepNo: 3,
@@ -61,8 +62,31 @@ export const itinerarySteps: IApproachStep[] = [
   }
 ]
 
-
-
 export const STORAGE_KEYS = {
   userKey: 'userKey',
+};
+
+export const getIconComponent = (key: string) => {
+  switch (key) {
+    case 'departure':
+      return DepartureIcon;
+    case 'lunch':
+      return LunchIcon;
+    case 'breakfast':
+      return BreakfastIcon;
+    case 'dinner':
+      return LunchIcon;
+    case 'check_in':
+      return CheckInIcon;
+    case 'check_out':
+      return CheckInIcon;
+    case 'morning_activity':
+      return ActivityIcon;
+    case 'afternoon_activity':
+      return ActivityIcon;
+    case 'evening_activity':
+      return ActivityIcon;
+    default:
+      return DepartureIcon;
+  }
 };

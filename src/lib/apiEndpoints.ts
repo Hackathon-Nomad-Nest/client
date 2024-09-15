@@ -1,5 +1,6 @@
 export default {
   HOME: '/',
-  LOGIN: '/v1/auth/login',
-  SUPPORT_FORM: 'v1/ticket',
+  LOGIN: '/auth/login',
+  GET_PLAN_BY_ID: '/itinerary-plan',
+  SUPPORT_FORM: '/ticket',
 };
