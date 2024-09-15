@@ -1,3 +1,4 @@
+import { ActivityIcon, BreakfastIcon, CheckInIcon, DepartureIcon, LunchIcon } from 'src/Assets/Icons';
 import { IApproachStep, IFaq } from './types';
 
 export const FAQs: IFaq[] = [
@@ -36,42 +37,66 @@ export const FAQs: IFaq[] = [
 export const itinerarySteps: IApproachStep[] = [
   {
     stepNo: 1,
-    title: "Location Selection",
-    description: "Identify and choose destinations based on user preferences."
+    title: 'Location Selection',
+    description: 'Identify and choose destinations based on user preferences.',
   },
   {
     stepNo: 2,
-    title: "Types of Trip",
-    description: "Determine the nature of the trip—relaxing, adventurous, etc."
+    title: 'Types of Trip',
+    description: 'Determine the nature of the trip—relaxing, adventurous, etc.',
   },
   {
     stepNo: 3,
-    title: "Travel Party Size",
-    description: "Gather information on the number of travelers."
+    title: 'Travel Party Size',
+    description: 'Gather information on the number of travelers.',
   },
   {
     stepNo: 4,
-    title: "Duration",
-    description: "Specify the number of days for the itinerary."
+    title: 'Duration',
+    description: 'Specify the number of days for the itinerary.',
   },
   {
     stepNo: 5,
-    title: "Budget Range",
-    description: "Request the user's budget range."
+    title: 'Budget Range',
+    description: "Request the user's budget range.",
   },
   {
     stepNo: 6,
-    title: "Mode of Transport",
-    description: "Determine preferred modes of transportation."
+    title: 'Mode of Transport',
+    description: 'Determine preferred modes of transportation.',
   },
   {
     stepNo: 7,
-    title: "Duration",
-    description: "Specify the number of days for the itinerary."
-  }
+    title: 'Duration',
+    description: 'Specify the number of days for the itinerary.',
+  },
 ];
-
 
 export const STORAGE_KEYS = {
   userKey: 'userKey',
+};
+
+export const getIconComponent = (key: string) => {
+  switch (key) {
+    case 'departure':
+      return DepartureIcon;
+    case 'lunch':
+      return LunchIcon;
+    case 'breakfast':
+      return BreakfastIcon;
+    case 'dinner':
+      return LunchIcon;
+    case 'check_in':
+      return CheckInIcon;
+    case 'check_out':
+      return CheckInIcon;
+    case 'morning_activity':
+      return ActivityIcon;
+    case 'afternoon_activity':
+      return ActivityIcon;
+    case 'evening_activity':
+      return ActivityIcon;
+    default:
+      return DepartureIcon;
+  }
 };
