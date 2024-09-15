@@ -1,4 +1,5 @@
 
+import Footer from "src/components/Footer";
 import Header from "src/components/Header";
 import { IRoutesConfigType } from "src/lib/types";
 
@@ -12,6 +13,7 @@ const PublicRoute = ({ config }: { config: IRoutesConfigType }) => {
     <>
       {isHeader ? <Header /> : null}
       <Component />
+      <Footer />
     </>
   );
 };
