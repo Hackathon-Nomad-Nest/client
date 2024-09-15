@@ -1,7 +1,6 @@
 import { lazy } from 'react';
 import { routeAccess, routes } from './routeConstants';
 import { IRoutesConfigType } from 'src/lib/types';
-import Explore from 'src/screens/Explore';
 import MAP_ANIMATED from 'src/screens/MapAnimated';
 const Home = lazy(() => import('../screens/Home'));
 const Support = lazy(() => import('src/screens/Support'));
@@ -9,6 +8,7 @@ const ItineraryDetailsForm = lazy(() => import('../screens/ItineraryDetailsForm'
 const PlanDetail = lazy(() => import('../screens/PlanDetail'));
 const PrintPlanDetail = lazy(() => import('../screens/PlanDetail/printPdf'));
 const Checklist = lazy(() => import('../screens/CheckList'));
+const Explore = lazy(() => import('../screens/Explore'));
 
 const routesConfig = (): Array<IRoutesConfigType> => {
   return [
