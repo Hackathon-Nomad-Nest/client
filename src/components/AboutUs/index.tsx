@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { routes } from 'src/routes/routeConstants';
 import Box from 'src/sharedComponents/Box';
 
-const AboutUs = () => {
+const AboutUs = ({ buttonPresent }: any) => {
   return (
     <Box className='relative overflow-hidden'>
       <Box aria-hidden='true' className='flex absolute -top-96 start-1/2 transform -translate-x-1/2'>

@@ -31,3 +31,10 @@ export const addPlanById = (id: string, data: IPlanChangeProps) => {
     data,
   });
 };
+
+export const getItenaryPlan = () => {
+  return apiRequest({
+    method: 'GET',
+    url: `${apiEndpoints.ITINERARY_PLAN}/`,
+  });
+};

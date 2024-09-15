@@ -73,3 +73,13 @@ export interface ITrip {
   trip_details: ITripDetails;
   travel_plan: Record<string, IDayPlan>;
 }
+
+export interface ITPlan {
+  budget: string,
+  to: string,
+  from: string,
+  adults: string,
+  kids: string,
+  numberOfDays: string,
+  id: string,
+}
