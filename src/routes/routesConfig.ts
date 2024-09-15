@@ -48,6 +48,13 @@ const routesConfig = (): Array<IRoutesConfigType> => {
       isFooter: false,
     },
     {
+      path: routes.EDIT_ITINERARY_DETAILS,
+      component: ItineraryDetailsForm,
+      layout: routeAccess.PUBLIC,
+      isHeader: false,
+      isFooter: false,
+    },
+    {
       path: routes.MAPANIMATED,
       component: MapAnimated,
       layout: routeAccess.PUBLIC,
