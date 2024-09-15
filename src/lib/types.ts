@@ -13,3 +13,9 @@ export interface IFaq {
   question: string;
   answer: string;
 }
+
+export interface IApproachStep {
+  stepNo: number;
+  title: string;
+  description: string;
+}
