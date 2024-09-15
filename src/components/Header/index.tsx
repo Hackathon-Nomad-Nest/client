@@ -5,6 +5,7 @@ import { useGoogleLogin } from '@react-oauth/google';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch } from 'src/redux';
 import { getUserDetails, loginUser } from 'src/redux/Slices/userSlice';
+import { navRoutes } from 'src/lib/constants';
 
 const Header = () => {
   const { isLoading: isUserLoading, data: user } = useSelector(getUserDetails);
@@ -14,12 +15,6 @@ const Header = () => {
     onSuccess: (tokenResponse) => dispatch(loginUser(tokenResponse.access_token)),
     onError: (errorResponse) => console.log(errorResponse),
   });
-
-  const navRoutes = [
-    { id: 1, path: '', label: 'Plans' },
-    { id: 2, path: '', label: 'About' },
-    { id: 3, path: '', label: 'Support' },
-  ];
 
   return (
     <header className='flex glass flex-wrap md:justify-start md:flex-nowrap z-50 w-[98%]  mx-auto mt-3'>
@@ -106,7 +101,6 @@ const Header = () => {
                 >
                   {route.label}
                 </Link>
-                {/* < img className="inline-block size-[62px] rounded-full" src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=300&h=300&q=80" alt="Avatar" /> */}
               </>
             ))}
           </div>

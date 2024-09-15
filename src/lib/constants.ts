@@ -16,6 +16,7 @@ import FlightIcon from '@mui/icons-material/Flight';
 import { ActivityIcon, BreakfastIcon, CheckInIcon, DepartureIcon, LunchIcon } from 'src/Assets/Icons';
 import { IApproachStep, IFaq } from './types';
 import { TripTypes } from 'src/lib/types';
+import { routes } from 'src/routes/routeConstants';
 
 export const FAQs: IFaq[] = [
   {
@@ -195,8 +196,9 @@ export const SideBarItems = [
 export const itinerarySteps: IApproachStep[] = [
   {
     stepNo: 1,
-    title: "Location & Travel Party Size",
-    description: "Identify and choose destinations based on user preferences and gather information on the number of travelers."
+    title: 'Location & Travel Party Size',
+    description:
+      'Identify and choose destinations based on user preferences and gather information on the number of travelers.',
   },
   {
     stepNo: 2,
@@ -205,20 +207,20 @@ export const itinerarySteps: IApproachStep[] = [
   },
   {
     stepNo: 3,
-    title: "Duration",
-    description: "Specify the number of days for the itinerary."
+    title: 'Duration',
+    description: 'Specify the number of days for the itinerary.',
   },
   {
     stepNo: 4,
-    title: "Budget Range & Mode of Transport",
-    description: "Request the user's budget range and determine preferred modes of transportation."
+    title: 'Budget Range & Mode of Transport',
+    description: "Request the user's budget range and determine preferred modes of transportation.",
   },
   {
     stepNo: 5,
-    title: "Duration",
-    description: "Specify the number of days for the itinerary."
-  }
-]
+    title: 'Duration',
+    description: 'Specify the number of days for the itinerary.',
+  },
+];
 
 export const STORAGE_KEYS = {
   userKey: 'userKey',
@@ -248,3 +250,8 @@ export const getIconComponent = (key: string) => {
       return DepartureIcon;
   }
 };
+
+export const navRoutes = [
+  { id: 1, path: routes.EXPLORE, label: 'Explore' },
+  { id: 2, path: routes.SUPPORT, label: 'Support' },
+];
