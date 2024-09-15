@@ -18,11 +18,10 @@ export const createItineraryPlan = createAsyncThunk<
 >(CREATE_ITINERARY_PLAN, async (details, thunkAPI) => {
   try {
     const response = await createPlan(details.formData, details.userId);
-    return response.data;
+    return response.plan;
   } catch (error) {
-    return thunkAPI.rejectWithValue(
-      `Failed to load with error ${error instanceof Error ? error.message : 'Unknown error'}`
-    );
+    console.log(error);
+    return thunkAPI.rejectWithValue(`Failed to create plan`);
   }
 });
 

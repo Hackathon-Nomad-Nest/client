@@ -40,7 +40,7 @@ const VideoBackground = () => {
                 </svg>
               </Link>
               <Link
-                to={routes.ITINERARY_DETAILS_FORM}
+                to='/itinerary-details-form'
                 className='py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-customTeal shadow-sm  focus:outline-none focus:bg-customTeal disabled:opacity-50 disabled:pointer-events-none'
               >
                 Plan a trip

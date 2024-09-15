@@ -32,7 +32,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch } from 'src/redux';
 import { createItineraryPlan, getItineraryPlan } from 'src/redux/Slices/itineraryPlanSlice';
 import { getUserDetails } from 'src/redux/Slices/userSlice';
-import LoadingButton from 'src/sharedComponents/LoadingButton';
+import Loader from 'src/components/Loader';
+import { useNavigate } from 'react-router-dom';
 
 const ItineraryDetailsForm: React.FC = () => {
   const minLimit = 0;
@@ -46,16 +47,17 @@ const ItineraryDetailsForm: React.FC = () => {
       to: '',
       startDate: new Date(),
       tripType: TripTypes.relaxing,
-      adults: 0,
+      adults: 1,
       kids: 0,
       budget: '0-1000000',
       numberOfDays: 2,
       preferredTravelMode: TravelMode.flight,
     },
   });
+  const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
   const { data: user } = useSelector(getUserDetails);
-  const { isLoading: isItineraryPlanLoading } = useSelector(getItineraryPlan);
+  const { isLoading: isItineraryPlanLoading, error } = useSelector(getItineraryPlan);
 
   const handleMinChange = (e: React.ChangeEvent<HTMLInputElement>, step: number) => {
     const value = Math.min(Number(e.target.value), maxBudget - step); // Ensure min < max
@@ -75,9 +77,16 @@ const ItineraryDetailsForm: React.FC = () => {
 
   const onSubmit: SubmitHandler<ItineraryDetailsFormValues> = async (data) => {
     if (user?.id) {
-      dispatch(createItineraryPlan({ formData: data, userId: user.id }));
+      const result = await dispatch(createItineraryPlan({ formData: data, userId: user.id }));
+      if (result.payload && typeof result.payload !== 'string') {
+        navigate(`/plan-detail/${result.payload.id}`);
+      }
     }
   };
+
+  if (isItineraryPlanLoading) {
+    return <Loader text='Generating Your Plan...' />;
+  }
 
   return (
     <Container>
@@ -95,7 +104,7 @@ const ItineraryDetailsForm: React.FC = () => {
                 <SidebarItem key={sideBarItem.id} active={sideBarItem.id === activeStep}>
                   {sideBarItem.title}
                   <SidebarIcon active={isActive}>
-                    <Icon color={isActive ? 'action' : undefined} />
+                    <Icon sx={{ color: 'white' }} />
                   </SidebarIcon>
                 </SidebarItem>
               );
@@ -139,7 +148,7 @@ const ItineraryDetailsForm: React.FC = () => {
                             }
                           >
                             <SidebarIcon>
-                              <Icon color='primary'/>
+                              <Icon sx={{ color: 'white' }} />
                             </SidebarIcon>
                             <OptionText>{option.label}</OptionText>
                           </Option>
@@ -186,7 +195,9 @@ const ItineraryDetailsForm: React.FC = () => {
                   Next
                 </Button>
               ) : (
-                <LoadingButton onClick={handleSubmit(onSubmit)} label='Submit' loading={isItineraryPlanLoading} />
+                <Button primary onClick={handleSubmit(onSubmit)}>
+                  {error ? 'Regenerate' : 'Submit'}
+                </Button>
               )}
             </ButtonGroup>
           </Content>

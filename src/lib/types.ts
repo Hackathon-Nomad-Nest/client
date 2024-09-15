@@ -42,6 +42,9 @@ export interface ItineraryDetailsFormValues {
   preferredTravelMode: TravelMode;
 }
 
+export interface ItineraryDetailsValues extends ItineraryDetailsFormValues {
+  id: string;
+}
 
 export interface IApproachStep {
   stepNo: number;

@@ -1,4 +1,4 @@
-import { ItineraryDetailsFormValues } from 'src/lib/types';
+import { ItineraryDetailsValues } from 'src/lib/types';
 
 export interface IUser {
   data: {
@@ -14,7 +14,7 @@ export interface IUser {
 }
 
 export interface IItineraryPlan {
-  data: ItineraryDetailsFormValues | null;
+  data: ItineraryDetailsValues | null;
   isLoading: boolean;
   error: string | null;
 }

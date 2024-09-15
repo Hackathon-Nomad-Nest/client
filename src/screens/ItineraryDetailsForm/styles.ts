@@ -25,6 +25,7 @@ const HeadingWrapper = styled.div`
 `;
 
 const Heading = styled.h1`
+  font-size: xx-large;
   font-weight: bold;
 `;
 

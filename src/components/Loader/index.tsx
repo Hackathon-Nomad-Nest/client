@@ -1,7 +1,11 @@
 // import React from 'react'
 import './style.css';
 
-const Loader = () => {
+interface Props {
+  text?: string;
+}
+
+const Loader = (props: Props) => {
   return (
     <div className='main-loader'>
       <svg className='svg-calLoader' xmlns='http://www.w3.org/2000/svg' width='230' height='230'>
@@ -22,6 +26,7 @@ const Loader = () => {
           fill='#000033'
         />
       </svg>
+      <h1>{props.text ?? 'Loading...'}</h1>
     </div>
   );
 };
