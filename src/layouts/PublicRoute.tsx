@@ -7,13 +7,14 @@ const PublicRoute = ({ config }: { config: IRoutesConfigType }) => {
   const {
     component: Component,
     isHeader = true,
+    isFooter = true
   } = config;
 
   return (
     <>
       {isHeader ? <Header /> : null}
       <Component />
-      <Footer />
+      {isFooter ? <Footer /> : null}
     </>
   );
 };

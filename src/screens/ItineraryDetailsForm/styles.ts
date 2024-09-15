@@ -1,4 +1,5 @@
 import { css_flex_col } from 'src/styles/globalStyles';
+import theme from 'src/styles/theme';
 import styled from 'styled-components';
 
 const Container = styled.div`
@@ -7,8 +8,8 @@ const Container = styled.div`
   height: 100vh;
   overflow: hidden;
   color: white;
-  background-color: #020449;
-  padding: 7vh;
+  background-color: ${theme.primaryColor.tealBlue};
+  padding: 6vh;
 `;
 
 const Wrapper = styled.div`
@@ -28,7 +29,7 @@ const Heading = styled.h1`
 `;
 
 const SubHeading = styled.p`
-  color: #898abd9e;
+  color: ${theme.primaryColor.apricot};
 `;
 
 const FormWrapper = styled.div`
@@ -51,15 +52,15 @@ const Sidebar = styled.div`
 const Content = styled.div`
   flex: 1;
   padding: 30px;
-  color: white;
+  color: ${theme.primaryColor.apricot};
 `;
 
 const SidebarItem = styled.div<{ active?: boolean }>`
   display: flex;
   align-items: center;
   gap: 20px;
-  padding: 20px 0;
-  color: ${({ active }) => (active ? '#10d876' : 'rgba(255, 255, 255, 0.6)')};
+  padding: 10px 0;
+  color: ${({ active }) => (active ? theme.primaryColor.apricot : theme.primaryColor.peach)};
   cursor: pointer;
 `;
 
@@ -68,7 +69,7 @@ const SidebarIcon = styled.div<{ active?: boolean }>`
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background-color: ${({ active }) => (active ? '#10d876' : 'rgba(255, 255, 255, 0.3)')};
+  background-color: ${({ active }) => (active ? theme.primaryColor.peach : theme.primaryColor.turquoiseGreen)};
   margin-right: 10px;
 `;
 
@@ -103,7 +104,7 @@ const OptionContainer = styled.div`
   display: flex;
   flex-direction: column;
   margin-top: 20px;
-  max-height: 50vh;
+  max-height: 40vh;
   overflow: auto;
 
   &::-webkit-scrollbar {
@@ -210,9 +211,9 @@ const ButtonGroup = styled.div`
 
 const Button = styled.button<{ primary?: boolean }>`
   padding: 10px 20px;
-  background-color: ${({ primary }) => (primary ? '#10d876' : 'transparent')};
-  color: ${({ primary }) => (primary ? '#111842' : 'rgba(255, 255, 255, 0.6)')};
-  border: 2px solid ${({ primary }) => (primary ? '#10d876' : 'rgba(255, 255, 255, 0.6)')};
+  background-color: ${({ primary }) => (primary ? theme.primaryColor.apricot : theme.primaryColor.tealBlue)};
+  color: ${({ primary }) => (primary ? theme.primaryColor.tealBlue : theme.primaryColor.apricot)};
+  border: 2px solid ${({ primary }) => (primary ? theme.primaryColor.turquoiseGreen : theme.primaryColor.peach)};
   border-radius: 8px;
   cursor: pointer;
 
