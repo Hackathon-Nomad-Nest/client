@@ -126,8 +126,6 @@ const Explore = () => {
     fetchPlanDetails();
   })
 
-
-  const cards: any = [];
   return (
     <div className=''>
       {/* head section */}
@@ -187,7 +185,7 @@ const Explore = () => {
                     <Link to={routes.ITINERARY_DETAILS_FORM} className="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-es-xl bg-white text-gray-800 shadow-sm hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none">
                       Customize
                     </Link>
-                    <Link to={routes.ITINERARY_DETAILS_FORM} className="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-ee-xl bg-white text-gray-800 shadow-sm hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none">
+                    <Link to={`${routes.PLAN_DETAIL}/${item.id}`} className="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-ee-xl bg-white text-gray-800 shadow-sm hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none">
                       View
                     </Link>
                   </div>
@@ -234,7 +232,7 @@ const Explore = () => {
                     <Link to={routes.ITINERARY_DETAILS_FORM} className="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-es-xl bg-white text-gray-800 shadow-sm hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none">
                       Customize
                     </Link>
-                    <Link to={routes.ITINERARY_DETAILS_FORM} className="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-ee-xl bg-white text-gray-800 shadow-sm hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none">
+                    <Link to={`${routes.ITINERARY_DETAILS_FORM}/${item.id}`} className="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-ee-xl bg-white text-gray-800 shadow-sm hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none">
                       View
                     </Link>
                   </div>

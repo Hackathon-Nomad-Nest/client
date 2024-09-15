@@ -2,8 +2,7 @@ import { lazy } from 'react';
 import { routeAccess, routes } from './routeConstants';
 import { IRoutesConfigType } from 'src/lib/types';
 import Explore from 'src/screens/Explore';
-import MapAnimated from 'src/screens/MapAnimated';
-
+import MAP_ANIMATED from 'src/screens/MapAnimated';
 const Home = lazy(() => import('../screens/Home'));
 const Support = lazy(() => import('src/screens/Support'));
 const ItineraryDetailsForm = lazy(() => import('../screens/ItineraryDetailsForm'));
@@ -56,8 +55,8 @@ const routesConfig = (): Array<IRoutesConfigType> => {
       isFooter: false,
     },
     {
-      path: routes.MAPANIMATED,
-      component: MapAnimated,
+      path: routes.MAP_ANIMATED,
+      component: MAP_ANIMATED,
       layout: routeAccess.PUBLIC,
     },
     {

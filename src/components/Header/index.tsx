@@ -1,26 +1,26 @@
 import logo from '../../Assets/logo/Nomad-edited.png';
 import { Link } from 'react-router-dom';
 import './style.css';
-import { googleLogout, useGoogleLogin } from '@react-oauth/google';
-import { useDispatch, useSelector } from 'react-redux';
-import { AppDispatch } from 'src/redux';
-import { getUserDetails, loginUser, logoutUser } from 'src/redux/Slices/userSlice';
+// import { googleLogout, useGoogleLogin } from '@react-oauth/google';
+// import { useDispatch, useSelector } from 'react-redux';
+// import { AppDispatch } from 'src/redux';
+// import { getUserDetails, loginUser, logoutUser } from 'src/redux/Slices/userSlice';
 import { navRoutes } from 'src/lib/constants';
 import LoadingButton from 'src/sharedComponents/LoadingButton';
 
 const Header = () => {
-  const { isLoading: isUserLoading, data: user } = useSelector(getUserDetails);
-  const dispatch = useDispatch<AppDispatch>();
+  // const { isLoading: isUserLoading, data: user } = useSelector(getUserDetails);
+  // const dispatch = useDispatch<AppDispatch>();
 
-  const login = useGoogleLogin({
-    onSuccess: (tokenResponse) => dispatch(loginUser(tokenResponse.access_token)),
-    onError: (errorResponse) => console.log(errorResponse),
-  });
+  // const login = useGoogleLogin({
+  //   onSuccess: (tokenResponse) => dispatch(loginUser(tokenResponse.access_token)),
+  //   onError: (errorResponse) => console.log(errorResponse),
+  // });
 
-  const logout = () => {
-    googleLogout();
-    dispatch(logoutUser());
-  };
+  // const logout = () => {
+  //   googleLogout();
+  //   dispatch(logoutUser());
+  // };
 
   return (
     <header className='flex glass flex-wrap md:justify-start md:flex-nowrap z-50 w-[98%]  mx-auto mt-3'>
@@ -28,7 +28,7 @@ const Header = () => {
         <div className='logo md:col-span-3 flex align-center'>
           <Link
             to='/home'
-            className='flex-none rounded-xl text-xl inline-block font-semibold focus:outline-none focus:opacity-80'
+            className='flex-none justify-center rounded-xl text-xl inline-block font-semibold focus:outline-none focus:opacity-80'
             aria-label='Preline'
           >
             <img src={logo} alt='' className='h-[60px] w-[60px]' />
@@ -36,13 +36,13 @@ const Header = () => {
         </div>
 
         <div className='flex items-center gap-x-1 md:gap-x-2 ms-auto py-1 md:ps-6 md:order-3 md:col-span-3'>
-          <LoadingButton
+          {/* <LoadingButton
             label={isUserLoading ? 'Loading...' : user ? 'Logout' : 'Sign in'}
             type='button'
             className='py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-xl bg-white border border-gray-200 text-black ß disabled:opacity-50 disabled:pointer-events-none'
             loading={isUserLoading}
             onClick={() => (user ? logout() : login())}
-          />
+          /> */}
 
           <div className='md:hidden'>
             <button
