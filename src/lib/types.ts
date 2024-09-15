@@ -14,6 +14,35 @@ export interface IFaq {
   answer: string;
 }
 
+export enum TripTypes {
+  relaxing = 'relaxing',
+  adventurous = 'adventurous',
+  religious = 'religious',
+  family = 'family',
+  cultural = 'cultural',
+  nightLife = 'night-life',
+}
+
+export enum TravelMode {
+  personalVehicle = 'personal-vehicle',
+  train = 'train',
+  bus = 'bus',
+  flight = 'flight',
+}
+
+export interface ItineraryDetailsFormValues {
+  to: string;
+  from: string;
+  budget: string;
+  startDate: Date;
+  adults: number;
+  kids: number;
+  tripType: TripTypes;
+  numberOfDays: number;
+  preferredTravelMode: TravelMode;
+}
+
+
 export interface IApproachStep {
   stepNo: number;
   title: string;

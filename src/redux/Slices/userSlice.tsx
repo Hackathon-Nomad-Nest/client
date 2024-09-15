@@ -23,16 +23,16 @@ export const loginUser = createAsyncThunk<IUser['data'], string, { rejectValue: 
           Accept: 'application/json',
         },
       });
-      const data: IUser['data'] = {
+      const data: Omit<IUser['data'], 'id'> = {
         name: response.data.name ?? '',
         email: response.data.email ?? '',
         picture: response.data.picture ?? '',
         given_name: response.data.given_name ?? '',
         family_name: response.data.family_name ?? '',
       };
-      await login(data);
-      setItem<IUser['data']>(STORAGE_KEYS.userKey, data);
-      return data;
+      const { user } = await login(data);
+      setItem<IUser['data']>(STORAGE_KEYS.userKey, user);
+      return user;
     } catch (error) {
       return thunkAPI.rejectWithValue(
         `Failed to load with error ${error instanceof Error ? error.message : 'Unknown error'}`
@@ -69,7 +69,7 @@ const userSlice = createSlice({
   },
 });
 
-export const getUser = (state: RootState) => state.user.data;
+export const getUserDetails = (state: RootState) => state.user;
 
 export const { fetchUser } = userSlice.actions;
 

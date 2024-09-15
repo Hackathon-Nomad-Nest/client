@@ -18,7 +18,7 @@ export function setSnackbar(
 const axiosInstance: AxiosInstance = axios.create({
   baseURL: BASE_URL,
   withCredentials: true, // Include this line to send cookies with every request
-  timeout: 50000,
+  timeout: 500000000,
   timeoutErrorMessage: 'Request timed out',
   // You can add your headers here
 });

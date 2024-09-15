@@ -9,10 +9,11 @@ import { ThemeProvider } from 'styled-components';
 import { SnackbarProvider } from 'notistack';
 import { routes } from './routes/routeConstants';
 import './App.css';
-import { useEffect } from 'react';
+import { Suspense, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from './redux';
 import { fetchUser } from './redux/Slices/userSlice';
+import Loader from './components/Loader';
 
 const App = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -38,19 +39,19 @@ const App = () => {
   }, [dispatch]);
 
   return (
-    // <Suspense fallback={<Loader />}>
-    <ThemeProvider theme={theme}>
-      {/* <HelmetProvider> */}
-      <Router>
-        <Routes>
-          {routesConfig().map((config) => renderRoute(config))}
-          <Route path='/' element={<Navigate to={routes.HOME} replace />} />
-          <Route path='*' element={<Navigate to={routes.HOME} replace />} />
-        </Routes>
-      </Router>
-      {/* </HelmetProvider> */}
-    </ThemeProvider>
-    // </Suspense>
+    <Suspense fallback={<Loader />}>
+      <ThemeProvider theme={theme}>
+        {/* <HelmetProvider> */}
+        <Router>
+          <Routes>
+            {routesConfig().map((config) => renderRoute(config))}
+            <Route path='/' element={<Navigate to={routes.HOME} replace />} />
+            <Route path='*' element={<Navigate to={routes.HOME} replace />} />
+          </Routes>
+        </Router>
+        {/* </HelmetProvider> */}
+      </ThemeProvider>
+    </Suspense>
   );
 };
 
