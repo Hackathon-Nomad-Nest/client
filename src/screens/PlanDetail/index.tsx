@@ -1,6 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/** @format */
-
 import { PlanHeader } from 'src/components/PlanHeader';
 import {
   StyledContainer,
@@ -12,7 +9,7 @@ import {
 } from './styles';
 import Accordion from 'src/components/Accordion';
 import DayCard, { IImageProps } from 'src/components/DayCard';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { addPlanById, removePlanById, getPlanById } from 'src/api/plan';
 import { useNavigate, useParams } from 'react-router-dom';
 import { StyledButton } from 'src/components/ConfirmModal/styles';
@@ -26,12 +23,11 @@ const PlanDetail = () => {
   const [planDetail, setPlanDetails] = useState<ITrip>();
   const [imageUrl, setImageUrl] = useState<Record<string, IImageProps[]>>();
   const { planId } = useParams();
-  const divRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
 
   const generateKeyArray = useCallback(() => {
     const keyArray = [planDetail!.trip_details?.destination, 'lunch', 'dinner', 'departure', 'check_in'];
-    Object.values(planDetail!.travel_plan)?.forEach((value: any) => {
+    Object.values(planDetail!.travel_plan)?.forEach((value) => {
       if (value?.morning_activity) {
         keyArray.push(value?.morning_activity?.activity);
       } else if (value?.afternoon_activity) {
@@ -119,11 +115,11 @@ const PlanDetail = () => {
   };
 
   return (
-    <StyledContainer ref={divRef}>
-      <StyledMainBanner $imageUrl={planDetail && imageUrl?.[planDetail?.trip_details?.destination]?.[0]?.url}>
+    <StyledContainer>
+      <StyledMainBanner $imageUrl={planDetail && imageUrl?.[planDetail?.trip_details.destination]?.[0]?.url}>
         <StyledInfoBox>
           <StyledMainHeading>
-            Trip from {planDetail?.trip_details?.origin} to {planDetail?.trip_details?.destination}
+            Trip from {planDetail?.trip_details.origin} to {planDetail?.trip_details.destination}
           </StyledMainHeading>
           <StyledText>{PLAN_DESCRIPTION}</StyledText>
           <StyledButton onClick={generatePDF}>Download PDF</StyledButton>
@@ -138,10 +134,10 @@ const PlanDetail = () => {
       {!!planDetail && (
         <>
           <PlanHeader
-            start_date={planDetail?.trip_details?.start_date}
-            end_date={planDetail?.trip_details?.end_date}
-            expected_budget={planDetail?.trip_details?.budget}
-            total_budget={planDetail?.cost_summary?.total_trip_cost}
+            start_date={planDetail.trip_details.start_date}
+            end_date={planDetail.trip_details.end_date}
+            expected_budget={planDetail.trip_details.budget}
+            total_budget={planDetail.cost_summary.total_trip_cost}
           />
           <StyledDaysContainer>
             {Object.entries(planDetail?.travel_plan)?.map(([key, value], index: number) => (

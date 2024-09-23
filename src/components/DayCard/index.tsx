@@ -12,8 +12,8 @@ import {
   StyledImageContainer,
   StyledInfoContainer,
   StyledPrice,
+  elementStyle,
 } from './styles';
-import theme from 'src/styles/theme';
 // import DeleteIcon from '@mui/icons-material/Delete';
 import ConfirmModal from '../ConfirmModal';
 import { useState } from 'react';
@@ -138,10 +138,3 @@ const DayCard = ({ handlePlanDelete, handleAddPlan, imageUrl, dayName, ...restPr
 };
 
 export default DayCard;
-
-const elementStyle = {
-  className: 'vertical-timeline-element--work',
-  contentStyle: { background: theme.primaryColor.apricot },
-  contentArrowStyle: { borderRight: '7px solid  rgb(33, 150, 243)' },
-  iconStyle: { background: theme.primaryColor.apricot, color: '#fff' },
-};

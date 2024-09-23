@@ -1,4 +1,5 @@
 import { css_button } from 'src/styles/globalStyles';
+import theme from 'src/styles/theme';
 import styled from 'styled-components';
 
 export const StyledCardContainer = styled.div`
@@ -49,3 +50,10 @@ export const StyledButton = styled.button`
   border-radius: 8px;
   margin-top: 16px;
 `;
+
+export const elementStyle = {
+  className: 'vertical-timeline-element--work',
+  contentStyle: { background: theme.primaryColor.apricot },
+  contentArrowStyle: { borderRight: '7px solid  rgb(33, 150, 243)' },
+  iconStyle: { background: theme.primaryColor.apricot, color: '#fff' },
+};
