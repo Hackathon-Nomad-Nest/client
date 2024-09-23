@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 import { useCallback, useEffect, useRef, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
@@ -7,7 +8,7 @@ import { useParams } from 'react-router-dom';
 const MAP_ANIMATED = () => {
   const mapContainerRef = useRef<any>();
   const mapRef = useRef<any>();
-  const [newCoordinates, setNewCoordinates] = useState<[number, number][]>();
+  const [, setNewCoordinates] = useState<[number, number][]>();
   const [planData, setPlanData] = useState<any>({});
   const { id } = useParams<string>();
 

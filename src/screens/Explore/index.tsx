@@ -139,7 +139,7 @@ const Explore = () => {
         </div>
       </div>
       {/* about us */}
-      <AboutUs buttonPresent={false} />
+      <AboutUs />
     </div>
   );
 };

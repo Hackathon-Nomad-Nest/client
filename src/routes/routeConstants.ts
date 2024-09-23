@@ -7,7 +7,8 @@ export enum routes {
   ITINERARY_DETAILS_FORM = '/itinerary-details-form',
   CHECKLIST = '/checklist/:planId',
   EDIT_ITINERARY_DETAILS = '/itinerary-details-form/:planId',
-  MAP_ANIMATED = '/map-animated'
+  MAP_ANIMATED = '/map-animated',
+  LOGIN = '/login',
 }
 
 export enum routeAccess {

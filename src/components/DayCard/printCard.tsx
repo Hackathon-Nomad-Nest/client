@@ -41,7 +41,7 @@ const PrintDayCard = (props: IDayPlan) => {
                   {value?.price ? (
                     <StyledPrice>
                       Price:
-                      <StyledAmount>${value?.price}</StyledAmount>
+                      <StyledAmount>&#8377;{value?.price}</StyledAmount>
                     </StyledPrice>
                   ) : null}
                 </StyledInfoContainer>
