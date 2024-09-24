@@ -14,7 +14,7 @@ import {
   StyledPrice,
   elementStyle,
 } from './styles';
-// import DeleteIcon from '@mui/icons-material/Delete';
+import DeleteIcon from '@mui/icons-material/Delete';
 import ConfirmModal from '../ConfirmModal';
 import { useState } from 'react';
 import { AddCircleOutline } from '@mui/icons-material';
@@ -35,6 +35,7 @@ interface IDayCardProps extends IDayPlan {
 
 const DayCard = ({ handlePlanDelete, handleAddPlan, imageUrl, dayName, ...restProps }: IDayCardProps) => {
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+  const [deleteActivityKey, setDeleteActivityKey] = useState('');
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
 
   const renderFields = (key: string, value: string | number, index: number) => {
@@ -59,6 +60,7 @@ const DayCard = ({ handlePlanDelete, handleAddPlan, imageUrl, dayName, ...restPr
 
   const handleModalClose = () => {
     setIsDeleteModalOpen(false);
+    setDeleteActivityKey('');
   };
 
   const handleAddModalClose = () => {
@@ -82,7 +84,13 @@ const DayCard = ({ handlePlanDelete, handleAddPlan, imageUrl, dayName, ...restPr
                 <StyledInfoContainer>
                   <StyledHeading>
                     {cleanString(key)}
-                    {/* <DeleteIcon onClick={() => setIsDeleteModalOpen(true)} sx={{ cursor: 'pointer' }} /> */}
+                    <DeleteIcon
+                      onClick={() => {
+                        setIsDeleteModalOpen(true);
+                        setDeleteActivityKey(key);
+                      }}
+                      sx={{ cursor: 'pointer' }}
+                    />
                   </StyledHeading>
                   {typeof value == 'string' ? (
                     <StyledText>{value}</StyledText>
@@ -110,17 +118,17 @@ const DayCard = ({ handlePlanDelete, handleAddPlan, imageUrl, dayName, ...restPr
                 }
                 alt={key + '-image'}
               />
-              <ConfirmModal
-                isOpen={isDeleteModalOpen}
-                onRequestClose={handleModalClose}
-                onSave={() => {
-                  handlePlanDelete(dayName, key);
-                }}
-                title='Are you sure you want to delete this event?'
-              />
             </VerticalTimelineElement>
           );
         })}
+        <ConfirmModal
+          isOpen={isDeleteModalOpen}
+          onRequestClose={handleModalClose}
+          onSave={() => {
+            handlePlanDelete(dayName, deleteActivityKey);
+          }}
+          title='Are you sure you want to delete this event?'
+        />
         <VerticalTimelineElement {...elementStyle} icon={<AddCircleOutline />}>
           <div>You can add new Event to {cleanString(dayName)}. Just click on the below button. </div>
           <StyledButton onClick={() => setIsAddModalOpen(true)}>Add Event</StyledButton>

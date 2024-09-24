@@ -62,12 +62,12 @@ export const StyledContainerBottom = styled.div`
   justify-content: end;
 `;
 
-export const StyledButton = styled.button`
+export const StyledButton = styled.button<{ $isLast?: boolean }>`
   ${css_button}
   background-color: ${(props) => props.theme.primaryColor.peach};
   padding: 12px 16px;
   border-radius: 8px;
-  margin: 16px;
+  margin: ${({ $isLast }) => ($isLast ? '16px' : '16px 16px 0')};
   font-size: 18px;
 `;
 
