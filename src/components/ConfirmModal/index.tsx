@@ -47,7 +47,7 @@ const ConfirmModal: React.FC<ModalProps> = ({ isOpen, onRequestClose, onSave, ti
         </StyledContainerTop>
         <StyledContainerBottom>
           <StyledCancelButton onClick={handleClose}>Cancel</StyledCancelButton>
-          <StyledButton type='button' onClick={handleSave}>
+          <StyledButton type='button' onClick={handleSave} $isLast>
             Continue
           </StyledButton>
         </StyledContainerBottom>
