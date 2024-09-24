@@ -117,7 +117,7 @@ const PlanDetail = () => {
   return (
     <StyledContainer>
       <StyledMainBanner $imageUrl={planDetail && imageUrl?.[planDetail?.trip_details.destination]?.[0]?.url}>
-        <StyledInfoBox>
+        <StyledInfoBox className='glass'>
           <StyledMainHeading>
             Trip from {planDetail?.trip_details.origin} to {planDetail?.trip_details.destination}
           </StyledMainHeading>
@@ -128,7 +128,9 @@ const PlanDetail = () => {
               View Essential Items to carry
             </StyledButton>
           )}
-          <StyledButton onClick={editPlan}>Edit your Plan</StyledButton>
+          <StyledButton $isLast onClick={editPlan}>
+            Edit your Plan
+          </StyledButton>
         </StyledInfoBox>
       </StyledMainBanner>
       {!!planDetail && (
