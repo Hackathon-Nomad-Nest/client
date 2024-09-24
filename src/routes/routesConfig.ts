@@ -25,7 +25,7 @@ const routesConfig = (): Array<IRoutesConfigType> => {
     {
       path: routes.PLAN_DETAIL,
       component: PlanDetail,
-      layout: routeAccess.PRIVATE,
+      layout: routeAccess.PUBLIC,
     },
     {
       path: routes.PRINT_PLAN_DETAIL,
