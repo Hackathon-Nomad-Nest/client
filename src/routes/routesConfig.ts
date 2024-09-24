@@ -25,7 +25,7 @@ const routesConfig = (): Array<IRoutesConfigType> => {
     {
       path: routes.PLAN_DETAIL,
       component: PlanDetail,
-      layout: routeAccess.PUBLIC,
+      layout: routeAccess.PRIVATE,
     },
     {
       path: routes.PRINT_PLAN_DETAIL,
@@ -42,14 +42,14 @@ const routesConfig = (): Array<IRoutesConfigType> => {
     {
       path: routes.ITINERARY_DETAILS_FORM,
       component: ItineraryDetailsForm,
-      layout: routeAccess.PUBLIC,
+      layout: routeAccess.PRIVATE,
       isHeader: false,
       isFooter: false,
     },
     {
       path: routes.EDIT_ITINERARY_DETAILS,
       component: ItineraryDetailsForm,
-      layout: routeAccess.PUBLIC,
+      layout: routeAccess.PRIVATE,
       isHeader: false,
       isFooter: false,
     },
