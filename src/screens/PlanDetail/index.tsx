@@ -17,7 +17,7 @@ import { routes } from 'src/routes/routeConstants';
 import { PLAN_DESCRIPTION } from 'src/lib/constants';
 import { getImageUrl } from 'src/api/imageUrl';
 import { ITrip } from 'src/model/trip';
-import { cleanString } from 'src/lib/helper';
+import { cleanString, removeDuplicates } from 'src/lib/helper';
 
 const PlanDetail = () => {
   const [planDetail, setPlanDetails] = useState<ITrip>();
@@ -26,17 +26,17 @@ const PlanDetail = () => {
   const navigate = useNavigate();
 
   const generateKeyArray = useCallback(() => {
-    const keyArray = [planDetail!.trip_details?.destination, 'lunch', 'dinner', 'departure', 'check_in'];
+    const keyArray = [planDetail!.trip_details?.destination];
     Object.values(planDetail!.travel_plan)?.forEach((value) => {
-      if (value?.morning_activity) {
-        keyArray.push(value?.morning_activity?.activity);
-      } else if (value?.afternoon_activity) {
-        keyArray.push(value?.afternoon_activity?.activity);
-      } else if (value?.evening_activity) {
-        keyArray.push(value?.evening_activity?.activity);
-      }
+      Object.entries(value).forEach(([key, activity]) => {
+        if (key === 'morning_activity' || key === 'afternoon_activity' || key === 'evening_activity') {
+          keyArray.push(activity?.activity);
+        } else {
+          keyArray.push(key);
+        }
+      });
     });
-    return keyArray;
+    return removeDuplicates(keyArray);
   }, [planDetail]);
 
   const fetchPlanDetails = useCallback(async (id: string) => {

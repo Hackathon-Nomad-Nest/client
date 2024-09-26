@@ -19,6 +19,7 @@ export const StyledImageContainer = styled.img`
   max-height: 400px;
   height: auto;
   border-radius: 8px;
+  object-fit: cover;
 `;
 
 export const StyledDescription = styled.p`
