@@ -11,13 +11,14 @@ import Accordion from 'src/components/Accordion';
 import DayCard, { IImageProps } from 'src/components/DayCard';
 import { useCallback, useEffect, useState } from 'react';
 import { addPlanById, removePlanById, getPlanById } from 'src/api/plan';
-import { useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { StyledButton } from 'src/components/ConfirmModal/styles';
 import { routes } from 'src/routes/routeConstants';
 import { PLAN_DESCRIPTION } from 'src/lib/constants';
 import { getImageUrl } from 'src/api/imageUrl';
 import { ITrip } from 'src/model/trip';
 import { cleanString, removeDuplicates } from 'src/lib/helper';
+import { Box } from '@mui/material';
 
 const PlanDetail = () => {
   const [planDetail, setPlanDetails] = useState<ITrip>();
@@ -117,22 +118,26 @@ const PlanDetail = () => {
   return (
     <StyledContainer>
       <StyledMainBanner $imageUrl={planDetail && imageUrl?.[planDetail?.trip_details.destination]?.[0]?.url}>
-        <StyledInfoBox className='glass'>
-          <StyledMainHeading>
-            Trip from {planDetail?.trip_details.origin} to {planDetail?.trip_details.destination}
-          </StyledMainHeading>
-          <StyledText>{PLAN_DESCRIPTION}</StyledText>
-          <StyledButton onClick={generatePDF}>Download PDF</StyledButton>
+      <Box className='grid md:grid-cols-2 gap-4 md:gap-8 xl:gap-20 xl:mx-[80px] md:items-center p-10'>
+          <Box>
+            <h1 className='block text-3xl font-bold text-white sm:text-4xl lg:text-6xl lg:leading-tight text-shadow'>
+            Trip from <span className='text-gray-900'>{planDetail?.trip_details.origin}</span> to <span className='text-gray-900'>{planDetail?.trip_details.destination}</span>
+            </h1>
+          </Box>
+        </Box>
+       
+      </StyledMainBanner>
+      <Box className='m-5 grid gap-3 w-full sm:inline-flex border'>
+            <StyledButton onClick={generatePDF}>Download PDF</StyledButton>
           {planId && (
             <StyledButton onClick={() => navigate(routes.CHECKLIST.replace(':planId', planId))}>
               View Essential Items to carry
             </StyledButton>
           )}
-          <StyledButton $isLast onClick={editPlan}>
+          <StyledButton onClick={editPlan}>
             Edit your Plan
           </StyledButton>
-        </StyledInfoBox>
-      </StyledMainBanner>
+            </Box>
       {!!planDetail && (
         <>
           <PlanHeader
@@ -154,6 +159,12 @@ const PlanDetail = () => {
               </Accordion>
             ))}
           </StyledDaysContainer>
+          <Link
+                to={`/map-animated/${planId}`}
+                className='py-3 px-4 mb-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-customTeal shadow-sm  focus:outline-none focus:bg-customTeal disabled:opacity-50 disabled:pointer-events-none'
+              > 
+                Trip Summary
+              </Link>
         </>
       )}
     </StyledContainer>

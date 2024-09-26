@@ -33,6 +33,7 @@ export const StyledHeading = styled.h3`
   align-items: center;
   justify-content: space-between;
   width: 100%;
+  color: white;
   font-weight: 600;
   font-size: 24px;
 `;
@@ -46,15 +47,16 @@ export const StyledPrice = styled.div`
 
 export const StyledButton = styled.button`
   ${css_button}
-  background-color: ${(props) => props.theme.primaryColor.peach};
+  background-color: ${(props) => props.theme.primaryColor.tealBlue};
   padding: 8px 16px;
+  color: white;
   border-radius: 8px;
   margin-top: 16px;
 `;
 
 export const elementStyle = {
   className: 'vertical-timeline-element--work',
-  contentStyle: { background: theme.primaryColor.apricot },
+  contentStyle: { background: theme.primaryColor.tealBlue },
   contentArrowStyle: { borderRight: '7px solid  rgb(33, 150, 243)' },
-  iconStyle: { background: theme.primaryColor.apricot, color: '#fff' },
+  iconStyle: { background: theme.primaryColor.tealBlue, color: 'black' },
 };

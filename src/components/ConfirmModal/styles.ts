@@ -62,17 +62,27 @@ export const StyledContainerBottom = styled.div`
   justify-content: end;
 `;
 
-export const StyledButton = styled.button<{ $isLast?: boolean }>`
-  ${css_button}
-  background-color: ${(props) => props.theme.primaryColor.peach};
-  padding: 12px 16px;
-  border-radius: 8px;
-  margin: ${({ $isLast }) => ($isLast ? '16px' : '16px 16px 0')};
-  font-size: 18px;
+export const StyledButton = styled.button`
+ display: inline-flex; 
+padding-top: 0.75rem;
+padding-bottom: 0.75rem; 
+padding-left: 1rem;
+padding-right: 1rem; 
+column-gap: 0.5rem; 
+justify-content: center; 
+align-items: center; 
+border-radius: 0.5rem; 
+border-width: 1px; 
+border-color: transparent; 
+font-size: 0.875rem;
+line-height: 1.25rem; 
+font-weight: 500; 
+color: #F3F4F6; 
+background: ${(props) => props.theme.primaryColor.tealBlue};
 `;
 
 export const StyledCancelButton = styled(StyledButton)`
   background-color: white;
-  border: 1px solid ${(props) => props.theme.primaryColor.peach};
+  border: 1px solid ${(props) => props.theme.primaryColor.tealBlue};
   margin: 16px;
 `;

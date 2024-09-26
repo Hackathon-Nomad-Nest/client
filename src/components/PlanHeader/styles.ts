@@ -7,11 +7,11 @@ export const StyledContainer = styled.div`
   width: 100%;
   background-color: white;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
-  padding: 10px;
+  padding: 10px 35px;
   z-index: 2;
-  border-bottom: 5px solid ${(props) => props.theme.primaryColor.peach};
+  border-bottom: 5px solid ${(props) => props.theme.primaryColor.tealBlue};
   flex-wrap: wrap;
   gap: 16px;
 `;
@@ -32,8 +32,9 @@ export const StyledBudget = styled.div`
 
 export const StyledAmount = styled.div`
   padding: 8px 16px;
+  color: white;
   border-radius: 8px;
-  background-color: ${(props) => props.theme.primaryColor.peach};
+  background-color: ${(props) => props.theme.primaryColor.turquoiseGreen};
 `;
 
 export const StyledDate = styled.p`
