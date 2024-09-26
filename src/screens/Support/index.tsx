@@ -18,7 +18,6 @@ import { BoxWithHiddenScrollbar } from './style';
 import { submitSupportFormData } from 'src/api/supportForm';
 import SupportImage from 'src/assets/Backgrounds/support-page.jpg';
 
-
 export default function AccordionExpandIcon() {
   const [email, setEmail] = useState<string>('');
   const [query, setQuery] = useState<string>('');
@@ -27,12 +26,12 @@ export default function AccordionExpandIcon() {
 
   const handleEmailChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
-    setErrors(prev => ({ ...prev, email: '' }));
+    setErrors((prev) => ({ ...prev, email: '' }));
   }, []);
 
   const handleQueryChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     setQuery(e.target.value);
-    setErrors(prev => ({ ...prev, query: '' }));
+    setErrors((prev) => ({ ...prev, query: '' }));
   }, []);
 
   const validateForm = useCallback(() => {
@@ -76,16 +75,15 @@ export default function AccordionExpandIcon() {
 
   return (
     <>
-      <img src={SupportImage} alt="" className='absolute -z-10 top-0 w-full h-full' />
-      <Box className="flex max-w-[85rem] glass p-10 mx-10 mt-24 mb-12 " sx={{ gap: '1rem' }}>
-        <div className="bg-transparent">
-        </div>
+      <img src={SupportImage} alt='' className='absolute -z-10 top-0 w-full h-full' />
+      <Box className='flex max-w-[85rem] glass p-10 mx-10 mt-24 mb-12 ' sx={{ gap: '1rem' }}>
+        <div className='bg-transparent'></div>
         {/* FAQs */}
-        <BoxWithHiddenScrollbar className="flex-column flex-1 oveflow-y-auto">
+        <BoxWithHiddenScrollbar className='flex-column flex-1 oveflow-y-auto'>
           {FAQs.map((faq: IFaq) => (
             <Box key={faq.question}>
-              <Accordion>
-                <AccordionSummary expandIcon={<ArrowDropDownIcon />} aria-controls="panel1-content" id="panel1-header">
+              <Accordion style={{ boxShadow: 'none', background: '#e5e5e57a' }}>
+                <AccordionSummary expandIcon={<ArrowDropDownIcon />} aria-controls='panel1-content' id='panel1-header'>
                   <Typography>{faq.question}</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
@@ -97,13 +95,13 @@ export default function AccordionExpandIcon() {
         </BoxWithHiddenScrollbar>
 
         {/* Form - Input, Comment, Submit Button */}
-        <Box className="flex-1 align-self-center" sx={{ marginX: '70px' }}>
-          <Typography variant="h5" gutterBottom>
+        <Box className='flex-1 align-self-center' sx={{ marginX: '70px' }}>
+          <Typography variant='h5' gutterBottom>
             Get In Touch
           </Typography>
-          <Box className="flex-column" sx={{ gap: '1rem' }}>
+          <Box className='flex-column' sx={{ gap: '1rem' }}>
             <Input
-              placeholder="Enter your email address"
+              placeholder='Enter your email address'
               value={email}
               onChange={handleEmailChange}
               error={!!errors.email}
@@ -111,7 +109,7 @@ export default function AccordionExpandIcon() {
               required
             />
             <TextField
-              placeholder="Enter your query"
+              placeholder='Enter your query'
               value={query}
               onChange={handleQueryChange}
               multiline
@@ -121,8 +119,8 @@ export default function AccordionExpandIcon() {
               required
             />
             <LoadingButton
-              label="Submit"
-              type="submit"
+              label='Submit'
+              type='submit'
               sx={{ width: 'fit-content' }}
               loading={loading}
               onClick={handleSubmit}

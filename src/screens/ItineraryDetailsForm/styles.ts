@@ -5,10 +5,8 @@ import styled from 'styled-components';
 const Container = styled.div`
   ${css_flex_col()}
   justify-content: flex-start;
-  height: 100vh;
   overflow: hidden;
-  color: white;
-  background-color: ${theme.primaryColor.tealBlue};
+  color: ${theme.primaryColor.tealBlue};
   padding: 6vh;
 `;
 
@@ -16,6 +14,10 @@ const Wrapper = styled.div`
   ${css_flex_col()}
   align-items: flex-start;
   gap: 40px;
+  background: white;
+  box-shadow: 23px 23px 93px #a8a8a8, -23px -23px 93px #ffffff;
+  padding: 50px;
+  border-radius: 22px;
 `;
 
 const HeadingWrapper = styled.div`
@@ -30,7 +32,7 @@ const Heading = styled.h1`
 `;
 
 const SubHeading = styled.p`
-  color: ${theme.primaryColor.apricot};
+  color: ${theme.primaryColor.tealBlue};
 `;
 
 const FormWrapper = styled.div`
@@ -44,16 +46,15 @@ const Sidebar = styled.div`
   flex-direction: column;
   align-items: flex-end;
   width: 250px;
-  height: 100vh;
   padding-top: 20px;
   padding-right: 20px;
-  border-right: 2px solid rgba(255, 255, 255, 0.1);
+  border-right: 2px solid #898abd9e;
 `;
 
 const Content = styled.div`
   flex: 1;
   padding: 30px;
-  color: ${theme.primaryColor.apricot};
+  color: ${theme.primaryColor.tealBlue};
 `;
 
 const SidebarItem = styled.div<{ active?: boolean }>`
@@ -61,7 +62,7 @@ const SidebarItem = styled.div<{ active?: boolean }>`
   align-items: center;
   gap: 20px;
   padding: 10px 0;
-  color: ${({ active }) => (active ? theme.primaryColor.apricot : theme.primaryColor.peach)};
+  color: ${({ active }) => (active ? theme.primaryColor.tealBlue : theme.primaryColor.tealBlue)};
   cursor: pointer;
 `;
 
@@ -70,7 +71,7 @@ const SidebarIcon = styled.div<{ active?: boolean }>`
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background-color: ${({ active }) => (active ? theme.primaryColor.peach : theme.primaryColor.turquoiseGreen)};
+  background-color: ${({ active }) => (active ? theme.primaryColor.tealBlue : theme.primaryColor.turquoiseGreen)};
   margin-right: 10px;
 `;
 
@@ -96,9 +97,7 @@ const Input = styled.input`
   padding: 10px;
   margin-bottom: 20px;
   border-radius: 8px;
-  border: none;
-  background-color: rgba(255, 255, 255, 0.1);
-  color: white;
+  border: 1px solid;
 `;
 
 const OptionContainer = styled.div`
@@ -212,9 +211,9 @@ const ButtonGroup = styled.div`
 
 const Button = styled.button<{ primary?: boolean }>`
   padding: 10px 20px;
-  background-color: ${({ primary }) => (primary ? theme.primaryColor.apricot : theme.primaryColor.tealBlue)};
-  color: ${({ primary }) => (primary ? theme.primaryColor.tealBlue : theme.primaryColor.apricot)};
-  border: 2px solid ${({ primary }) => (primary ? theme.primaryColor.turquoiseGreen : theme.primaryColor.peach)};
+  background-color: ${({ primary }) => (primary ? theme.primaryColor.tealBlue : theme.primaryColor.tealBlue)};
+  color: white;
+  border: 2px solid ${({ primary }) => (primary ? theme.primaryColor.turquoiseGreen : theme.primaryColor.tealBlue)};
   border-radius: 8px;
   cursor: pointer;
 
