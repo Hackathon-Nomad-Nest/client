@@ -21,7 +21,7 @@ const VideoBackground = () => {
             <Box className='mt-7 grid gap-3 w-full sm:inline-flex'>
               <Link
                 to={routes.EXPLORE}
-                className='py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-customTeal text-gray-100 focus:outline-none focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none'
+                className='py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-customTeal text-gray-100 focus:outline-none disabled:opacity-50 disabled:pointer-events-none'
               >
                 Explore
                 <svg

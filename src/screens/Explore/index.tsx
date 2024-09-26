@@ -12,7 +12,7 @@ import { getItenaryPlan } from 'src/api/plan';
 import { ItineraryDetailsValues } from 'src/lib/types';
 import { getImageUrl } from 'src/api/imageUrl';
 import { IImageProps } from 'src/components/DayCard';
-import { removeDuplicates } from 'src/lib/helper';
+import { capitalizeWord, removeDuplicates, formatToIndianSystem } from 'src/lib/helper';
 
 const Explore = () => {
   const [dataItenary, setDataItenary] = useState<ItineraryDetailsValues[]>();
@@ -64,10 +64,11 @@ const Explore = () => {
         <img src={travel} alt='' className='absolute -z-10 top-0' />
         <div className='max-w-5xl mx-auto px-4 xl:px-0 pt-24 lg:pt-32 pb-24'>
           <h1 className='font-semibold text-white text-4xl md:text-6xl'>
-            <span className='text-customPeach '>NomadNest</span> Transforming wishes into journey
+            <div className='text-customPeach '>NomadNest</div>
           </h1>
+          <h3 className='mt-5 font-semibold text-white text-2xl md:text-3xl'>Transforming wishes into journey</h3>
           <div className='max-w-4xl'>
-            <p className='mt-5 text-white sm:text-lg text-sm'>NomadNest: Your Journey, Perfectly Tailored with AI.</p>
+            <p className='mt-5 text-white sm:text-lg text-sm'>Your Journey, Perfectly Tailored with AI.</p>
           </div>
         </div>
         <div className='relative overflow-hidden pt-4 '>
@@ -84,7 +85,7 @@ const Explore = () => {
 
       {/* journey cards */}
       <div className='heading sm:mt-24 mt-12 bg-white'>
-        <p className='text-4xl text-bold text-customTeal px-4 py-6 sm:px-6 lg:px-8 lg:py-8 mx-auto'>Explore Plans</p>
+        <p className='text-4xl text-bold text-customTeal px-4 py-6 sm:px-6 lg:px-8 lg:py-8 mx-auto'>Trending</p>
       </div>
       <div className='w-full px-4 py-6 sm:px-6 lg:px-8 lg:pb-14 bg-white'>
         <div className=' no-scrollbar flex overflow-x-scroll gap-6 w-full scrollbar-none'>
@@ -104,10 +105,10 @@ const Explore = () => {
                 <div className='p-4 md:p-6'>
                   <span className='block mb-1 text-md font-semibold uppercase text-black'>
                     <CurrencyRupeeIcon fontSize='small' />
-                    {item.budget}
+                    {formatToIndianSystem(item.budget)}
                   </span>
                   <p className='mt-3 text-gray-900 text-md'>
-                    From: <strong>{item.from}</strong> - To <strong>{item.to}</strong>
+                    <strong>{capitalizeWord(item.from)}</strong> to <strong>{capitalizeWord(item.to)}</strong>
                   </p>
                   <p className='mt-3 text-gray-900 text-md'>
                     <PersonIcon fontSize='small' /> {item.adults} People

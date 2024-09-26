@@ -4,6 +4,25 @@ import { isPlainObject, snakeCase } from 'lodash';
 import camelCase from 'lodash/camelCase';
 import { DeepPartial } from 'src/redux/types';
 
+export const formatToIndianSystem = (input: string): string => {
+  const num = Number(input.split('-')[1]);
+  const numStr = num.toString();
+  const lastThree = numStr.slice(-3);
+  let otherDigits = numStr.slice(0, -3);
+  if (otherDigits !== '') {
+    otherDigits = otherDigits.replace(/\B(?=(\d{2})+(?!\d))/g, ',');
+  }
+  return otherDigits + (otherDigits !== '' ? ',' : '') + lastThree;
+};
+
+export const capitalizeWord = (str: string): string => {
+  return str
+    .toLowerCase()
+    .split(' ')
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
+};
+
 export const filterNumeric = (input: string) => {
   return input.replace(/[^\d]/g, '');
 };
@@ -103,7 +122,7 @@ export function filterObjectKeys<T>(obj: any, keys: Array<keyof T>): DeepPartial
       if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
         result[key] = filterObjectKeys(
           value,
-          Object.keys(value).filter((singleValue) => typeof singleValue !== 'symbol') 
+          Object.keys(value).filter((singleValue) => typeof singleValue !== 'symbol')
         );
       } else {
         result[key] = value;

@@ -18,7 +18,7 @@ import { BoxWithHiddenScrollbar } from './style';
 import { submitSupportFormData } from 'src/api/supportForm';
 import SupportImage from 'src/assets/Backgrounds/support-page.jpg';
 
-export default function AccordionExpandIcon() {
+export default function Support() {
   const [email, setEmail] = useState<string>('');
   const [query, setQuery] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(false);
