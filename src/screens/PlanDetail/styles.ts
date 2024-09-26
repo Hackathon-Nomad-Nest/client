@@ -8,10 +8,12 @@ export const StyledContainer = styled.div`
 
 export const StyledMainBanner = styled.div<{ $imageUrl?: string }>`
   min-height: 80vh;
-  width: 100%;
+  width: 96vw;
   background-image: url(${({ $imageUrl }) => ($imageUrl ? $imageUrl : DUMMY_PLAN_IMAGE)});
   background-size: cover;
   background-position: center;
+  border-radius: 22px;
+  margin: 20px auto;
   padding: 20px;
 `;
 
@@ -36,6 +38,7 @@ export const StyledText = styled.p``;
 
 export const StyledDaysContainer = styled.div`
   margin: 32px 5%;
+  color: white;
   max-width: 1200px;
   align-self: center;
   width: 100%;

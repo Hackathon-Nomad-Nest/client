@@ -89,7 +89,7 @@ const DayCard = ({ handlePlanDelete, handleAddPlan, imageUrl, dayName, ...restPr
                         setIsDeleteModalOpen(true);
                         setDeleteActivityKey(key);
                       }}
-                      sx={{ cursor: 'pointer' }}
+                      sx={{ cursor: 'pointer', color: 'white' }}
                     />
                   </StyledHeading>
                   {typeof value == 'string' ? (

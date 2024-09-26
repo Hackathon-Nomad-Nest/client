@@ -15,7 +15,7 @@ const Wrapper = styled.div`
   align-items: flex-start;
   gap: 40px;
   background: white;
-  box-shadow: 23px 23px 93px #a8a8a8, -23px -23px 93px #ffffff;
+  box-shadow: 1px 0px 16px #a8a8a8;
   padding: 50px;
   border-radius: 22px;
 `;

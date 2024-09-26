@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import mapboxgl, { LngLatLike } from 'mapbox-gl';
+import mapboxgl, { LngLatLike, Marker } from 'mapbox-gl';
 import { getPlanById } from 'src/api/plan';
 import { useParams } from 'react-router-dom';
 import { IDayPlan, ITrip } from 'src/model/trip';
@@ -8,7 +8,7 @@ const GOOGLE_MAP_ACCESS_KEY = import.meta.env.VITE_MAP_ACCESS_KEY;
 
 const MAP_ANIMATED = () => {
   const mapContainerRef = useRef<HTMLDivElement | null>(null);
-  const mapRef = useRef<mapboxgl.Map | null>(null);
+  const mapRef = useRef<mapboxgl.Map | any>(null);
   const [newCoordinates, setNewCoordinates] = useState<[number, number][]>();
   const [planData, setPlanData] = useState<ITrip>();
   const { id } = useParams();
@@ -21,9 +21,9 @@ const MAP_ANIMATED = () => {
       if (!mapRef.current) {
         mapRef.current = new mapboxgl.Map({
           container: mapContainerRef.current,
-          center: [74.8723, 31.634],
+          center: newCoordinates[0],
           style: 'mapbox://styles/mapbox/streets-v12',
-          zoom: 0,
+          zoom: 12,
         });
 
         mapRef.current.on('load', () => {
@@ -54,12 +54,11 @@ const MAP_ANIMATED = () => {
               'line-color': 'red',
               'line-opacity': 0.75,
               'line-width': 5,
+              'line-dasharray': [2, 2],
             },
           });
-
-          mapRef.current?.jumpTo({ center: coordinates[0] as LngLatLike, zoom: 12 });
+          mapRef.current?.flyTo({ center: coordinates[0] as LngLatLike, zoom: 12 });
           mapRef.current?.setPitch(30);
-
           let i = 0;
           const timer = setInterval(() => {
             if (i < coordinates.length) {
@@ -68,12 +67,14 @@ const MAP_ANIMATED = () => {
               if (geojsonSource) {
                 geojsonSource.setData(data);
               }
-              mapRef.current?.panTo(coordinates[i] as LngLatLike);
+              // new mapboxgl.Marker({})?.setLngLat([74.8723, 31.634]).addTo(mapRef.current);
+              mapRef?.current.flyTo({center: coordinates[i], essential: true, zoom: 12})
+              // mapRef.current?.panTo(coordinates[i] as LngLatLike);
               i++;
             } else {
               clearInterval(timer);
             }
-          }, 1000);
+          }, 1400);
         });
       }
     }
@@ -92,7 +93,7 @@ const MAP_ANIMATED = () => {
 
   const extractCoordinates = (travelPlan: Record<string, IDayPlan>): [number, number][] => {
     const coordinates: [number, number][] = [];
-
+    console.log('travelPlan', travelPlan)
     Object.keys(travelPlan).forEach((day) => {
       Object.values(travelPlan[day]).forEach((activity) => {
         if (activity.location_latitude && activity.location_longitude) {
@@ -112,7 +113,9 @@ const MAP_ANIMATED = () => {
 
   useEffect(() => {
     if (planData) {
+      console.log('planData', planData)
       const coordinates = extractCoordinates(planData.travel_plan);
+      console.log('coordinates',coordinates)
       setNewCoordinates(coordinates);
     }
   }, [planData]);
@@ -120,7 +123,7 @@ const MAP_ANIMATED = () => {
   return (
     <div className='bg-neutral-100'>
       <div className='max-w-5xl px-4 xl:px-0 py-10 lg:pt-20 lg:pb-20 mx-auto'>
-        <div className='grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 lg:items-center p-5'>
+        <div className='gap-10 lg:gap-16 lg:items-center p-5'>
           {/* Summary or other details */}
           <div className='space-y-3'>
             <dl className='flex flex-col sm:flex-row gap-1'>
@@ -135,7 +138,7 @@ const MAP_ANIMATED = () => {
             </dl>
           </div>
           {/* Map */}
-          <div className='aspect-w-16 aspect-h-9 lg:aspect-none h-80'>
+          <div className='lg:h-[500px] w-full'>
             <div ref={mapContainerRef} id='map' className='h-full w-full'></div>
           </div>
         </div>
